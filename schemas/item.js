@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       as: 'user',
       foreignKey: 'item_id'
     });
+    Item.belongsToMany(models.ItemCategory, {
+      through: models.ItemCategory,
+      as: 'category',
+      foreignKey: 'category_id'
+    });
   };
   return Item;
 };
