@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format:check": "npm run lint && prettier --list-different \"**/*.{js, jsx, css, json}\"",
     "lint": "eslint \"**/*.{js, jsx, json}\""
@@ -14,11 +15,15 @@
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.9.0",
     "husky": "^1.2.0",
+    "nodemon": "^1.18.6",
     "prettier": "^1.15.2"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
