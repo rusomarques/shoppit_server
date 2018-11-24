@@ -3,17 +3,16 @@ const data = require('./db.json');
 
 module.exports = {
   up: queryInterface => {
-    const users = data.users.map(user => ({
-      first_name: user.first_name,
-      last_name: user.last_name,
-      gender: user.gender,
-      birthday: user.birthday,
-      avatar_url: user.avatar_url,
+    const items = data.items.map(item => ({
+      item_name: item.item_name,
+      img_url: item.img_url,
+      amazon_url: item.amazon_url,
+      price: item.price,
       createdAt: new Date(),
       updatedAt: new Date()
     }));
 
-    return queryInterface.bulkInsert('Users', users, {});
+    return queryInterface.bulkInsert('Items', items, {});
   },
 
   down: () => {
