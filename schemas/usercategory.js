@@ -3,8 +3,14 @@ module.exports = (sequelize, DataTypes) => {
   const UserCategory = sequelize.define(
     'UserCategory',
     {
-      user_id: DataTypes.INTEGER,
-      category_id: DataTypes.INTEGER
+      user_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
+      category_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      }
     },
     {}
   );

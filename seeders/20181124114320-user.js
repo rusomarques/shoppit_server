@@ -9,6 +9,7 @@ module.exports = {
       gender: user.gender,
       birthday: user.birthday,
       avatar_url: user.avatar_url,
+      email: user.email,
       createdAt: new Date(),
       updatedAt: new Date()
     }));

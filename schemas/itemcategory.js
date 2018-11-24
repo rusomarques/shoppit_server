@@ -3,8 +3,14 @@ module.exports = (sequelize, DataTypes) => {
   const ItemCategory = sequelize.define(
     'ItemCategory',
     {
-      item_id: DataTypes.INTEGER,
-      category_id: DataTypes.INTEGER
+      item_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
+      category_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      }
     },
     {}
   );

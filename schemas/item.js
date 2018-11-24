@@ -3,10 +3,22 @@ module.exports = (sequelize, DataTypes) => {
   const Item = sequelize.define(
     'Item',
     {
-      item_name: DataTypes.STRING,
-      img_url: DataTypes.STRING,
-      amazon_url: DataTypes.STRING,
-      price: DataTypes.INTEGER
+      item_name: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
+      img_url: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
+      amazon_url: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
+      price: {
+        allowNull: false,
+        type: DataTypes.STRING
+      }
     },
     {}
   );

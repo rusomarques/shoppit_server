@@ -6,14 +6,16 @@
       "last_name": "Rutland",
       "gender": "female",
       "birthday": "01-11-1460",
+      "email": "lukesmells@cool.com",
       "avatar_url": "https://i.imgur.com/MU2dD8E.jpg"
     },
     {
       "user_id": 2,
       "first_name": "Amy",
-      "last_name": "Rutland",
+      "last_name": "Kirasack",
       "gender": "female",
-      "birthday": "01-11-1460",
+      "birthday": "06-18-1540",
+      "email": "catsarecool@cool.com",
       "avatar_url": "https://i.imgur.com/MU2dD8E.jpg"
     }
   ],
@@ -23,21 +25,21 @@
       "item_name": "Cool comfy cactus",
       "img_url": "https://i.imgur.com/koCQSPC.jpg",
       "amazon_url": "https://www.amazon.com/Squishable-Cactus-Plush-15/dp/B073HGG8QD/ref=sr_1_5?ie=UTF8&qid=1543002244&sr=8-5&keywords=cactus+plush",
-      "price": 4799
+      "price": "$48"
     },
     {
       "item_id": 2,
       "item_name": "NC-17 Product",
       "img_url": "https://i.imgur.com/AFOpn2F.jpg",
       "amazon_url": "https://www.amazon.com/Schylling-SSM-Sock-Monkey/dp/B0013JEAO4/ref=sr_1_4?ie=UTF8&qid=1543002432&sr=8-4&keywords=sock+monkey",
-      "price": 4099
+      "price": "$40"
     },
     {
       "item_id": 3,
       "item_name": "Banana guard",
       "img_url": "https://i.imgur.com/JveKVrZ.png?1",
       "amazon_url": "https://www.amazon.com/LovesTown-Different-Outdoor-Protector-Storage/dp/B072M4DQ45/ref=sr_1_2?ie=UTF8&qid=1543002605&sr=8-2&keywords=banana+bunker",
-      "price": 459
+      "price": "$5"
     }
   ],
   "categories": [

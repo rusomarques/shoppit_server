@@ -3,8 +3,14 @@ module.exports = (sequelize, DataTypes) => {
   const UserItem = sequelize.define(
     'UserItem',
     {
-      user_id: DataTypes.INTEGER,
-      item_id: DataTypes.INTEGER,
+      user_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
+      item_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
       affinity: {
         type: DataTypes.BOOLEAN,
         allowNull: false

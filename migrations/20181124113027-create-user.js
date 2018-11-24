@@ -9,9 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       first_name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       last_name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       gender: {
@@ -21,6 +23,10 @@ module.exports = {
         type: Sequelize.DATE
       },
       avatar_url: {
+        type: Sequelize.STRING
+      },
+      email: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
