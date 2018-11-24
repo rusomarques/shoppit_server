@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format:check": "npm run lint",
-    "lint": "eslint \"**/*.{js, jsx, json}\""
+    "lint": "eslint \"**/*.{js, jsx, json}\"",
+    "recreateDb": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,10 @@
     }
   },
   "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "pg": "^7.6.1",
+    "pg-promise": "^8.5.2",
     "sequelize": "^4.41.2",
     "sequelize-cli": "^5.3.0"
   }
