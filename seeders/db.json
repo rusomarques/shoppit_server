@@ -39,5 +39,15 @@
       "amazon_url": "https://www.amazon.com/LovesTown-Different-Outdoor-Protector-Storage/dp/B072M4DQ45/ref=sr_1_2?ie=UTF8&qid=1543002605&sr=8-2&keywords=banana+bunker",
       "price": 459
     }
+  ],
+  "categories": [
+    {
+      "category_id": 1,
+      "category_name": "Sports"
+    },
+    {
+      "item_id": 2,
+      "category_name": "Sneakers"
+    }
   ]
 }
