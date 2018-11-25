@@ -9,14 +9,10 @@ const options = {
 };
 
 rp(options)
-  .then(data => {
-    data('.CollectionGrid-tileName').each((i, el) => {
-      const title = cheerio
-        .load(el)
-        .text()
-        .trim();
-
-      console.log(title);
+  .then($ => {
+    $('.CollectionGrid a').each((i, el) => {
+      var link = $(el).attr('href');
+      console.log(link);
     });
   })
   .catch(err => console.log('ERROR', err));
