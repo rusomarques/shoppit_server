@@ -9,14 +9,15 @@ const options = {
 };
 
 rp(options)
-  .then(data => {
-    data('.CollectionGrid-tileName').each((i, el) => {
-      const title = cheerio
-        .load(el)
+  .then($ => {
+    $('.CollectionGrid-tile').each((i, el) => {
+      const title = $(el)
+        .find('.CollectionGrid-tileName')
         .text()
         .trim();
-
+      const link = $(el).attr('href');
       console.log(title);
+      console.log(link);
     });
   })
   .catch(err => console.log('ERROR', err));
