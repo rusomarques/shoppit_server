@@ -20,11 +20,21 @@ categoryModel.getAllItems = async category_id => {
     ]
   });
   const itemsInCategory = items.map(join => join.dataValues.item.dataValues);
-  // console.log('items in this category', itemsInCategory);
+  console.log('items in this category', itemsInCategory);
   return itemsInCategory;
 };
 
+// try this approach
+// const items = await db.ItemCategory.findAll({
+//   where: { category_id }
+// });
+// console.log(items.map(el => el.get({ plain: true })));
+// // create an array with item ids;
+// const items2 = await db.Items.findAll({
+//   where: { item_id }
+// });
+
 // categoryModel.getAll();
-// categoryModel.getAllItems(1);
+categoryModel.getAllItems(1);
 
 module.exports = categoryModel;

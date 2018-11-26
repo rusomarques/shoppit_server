@@ -9,6 +9,30 @@ module.exports = {
         category_id: data.categories[0].category_id,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        user_id: data.users[0].user_id,
+        category_id: data.categories[2].category_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: data.users[0].user_id,
+        category_id: data.categories[3].category_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: data.users[1].user_id,
+        category_id: data.categories[2].category_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: data.users[1].user_id,
+        category_id: data.categories[3].category_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ];
 
