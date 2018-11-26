@@ -31,4 +31,4 @@ const getCategoryItems = async (category, limit = 12, offset = 0) => {
   });
 };
 
-getCategoryItems('for-him', 10, 10);
+getCategoryItems('for-the-curious', 10, 0);
