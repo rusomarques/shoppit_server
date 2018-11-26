@@ -49,7 +49,6 @@ router
 
 // Category controllers
 router
-  // append category_id and send auth token through headers?
   .get('/categories', categoriesController.getAll)
   .get('/categories/:category_id/items', categoriesController.getAllItems);
 
