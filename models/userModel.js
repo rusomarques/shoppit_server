@@ -23,6 +23,8 @@ userModel.getOwnInfo = async user_id => {
     ]
   });
 
+  console.log('userinfoooo', userInfo.get({ plain: true }));
+
   // return object with basic info, categories
   return userInfo.get({ plain: true });
 };
@@ -59,11 +61,28 @@ userModel.getFriends = async user_id => {
 //   // delete UserCategory join entry
 // };
 
-// userModel.getLikedItems = async user_id => {
-//   // add affinity && user relationship
-// };
+userModel.getLikedItems = async user_id => {
+  const likedItems = await db.Item.findAll({
+    include: [
+      {
+        model: db.User,
+        as: 'user',
+        where: { user_id }
+        // where: {
+        //   [Op.and]: [{ user_id }, { affinity: true }]
+        // }
+        // attributes: ['affinity']
+      }
+    ],
+    raw: true
+  });
+  console.log('ilykdis', likedItems);
+  return likedItems;
+  // get items from UserItem table
+};
 
 // userModel.getOwnInfo(1);
-userModel.getFriends(1);
+// userModel.getFriends(1);
+userModel.getLikedItems(1);
 
 module.exports = userModel;
