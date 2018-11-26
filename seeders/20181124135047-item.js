@@ -4,6 +4,7 @@ const data = require('./db.json');
 module.exports = {
   up: queryInterface => {
     const items = data.items.map(item => ({
+      item_id: item.item_id,
       item_name: item.item_name,
       img_url: item.img_url,
       amazon_url: item.amazon_url,
