@@ -12,15 +12,15 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Category.associate = function(models) {
-    Category.belongsToMany(models.UserCategory, {
+    Category.belongsToMany(models.User, {
       through: models.UserCategory,
       as: 'user',
       foreignKey: 'category_id'
     });
-    Category.belongsToMany(models.ItemCategory, {
+    Category.belongsToMany(models.Item, {
       through: models.ItemCategory,
       as: 'item',
-      foreignKey: 'item_id'
+      foreignKey: 'category_id'
     });
   };
   return Category;
