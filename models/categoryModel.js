@@ -4,10 +4,9 @@ const db = require('./../schemas');
 
 categoryModel.getAll = async () => {
   const categories = await db.Category.findAll();
-  // console.log('ooo', categories.get('category_name'));
-  console.log('here are all categories', categories);
   const allCats = categories.map(cat => cat.dataValues);
-  console.log('meow', allCats);
+  // console.log('all cats! 🐈', allCats);
+  return allCats;
 };
 
 categoryModel.getAllItems = async category_id => {
@@ -19,14 +18,13 @@ categoryModel.getAllItems = async category_id => {
         as: 'item'
       }
     ]
-    // attributes: ['item_id']
   });
-  // console.log('items here', items.dataValues);
-  const itemIDs = items.map(item => item.dataValues);
-  console.log('aaa', itemIDs);
+  const itemsInCategory = items.map(join => join.dataValues.item.dataValues);
+  // console.log('items in this category', itemsInCategory);
+  return itemsInCategory;
 };
 
-categoryModel.getAll();
+// categoryModel.getAll();
 // categoryModel.getAllItems(1);
 
 module.exports = categoryModel;
