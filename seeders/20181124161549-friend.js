@@ -9,6 +9,18 @@ module.exports = {
         user_2_id: data.users[1].user_id,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        user_1_id: data.users[1].user_id,
+        user_2_id: data.users[2].user_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_1_id: data.users[2].user_id,
+        user_2_id: data.users[0].user_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ];
 

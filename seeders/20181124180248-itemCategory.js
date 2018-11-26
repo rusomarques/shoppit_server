@@ -18,6 +18,12 @@ module.exports = {
       },
       {
         item_id: data.items[2].item_id,
+        category_id: data.categories[0].category_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        item_id: data.items[2].item_id,
         category_id: data.categories[3].category_id,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -25,6 +31,12 @@ module.exports = {
       {
         item_id: data.items[3].item_id,
         category_id: data.categories[2].category_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        item_id: data.items[4].item_id,
+        category_id: data.categories[1].category_id,
         createdAt: new Date(),
         updatedAt: new Date()
       }
