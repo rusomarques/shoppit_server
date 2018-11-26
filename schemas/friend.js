@@ -3,12 +3,18 @@ module.exports = (sequelize, DataTypes) => {
   const Friend = sequelize.define(
     'Friend',
     {
+      friendship_id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       user_1_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'Users',
-          key: 'id'
+          key: 'user_id'
         }
       },
       user_2_id: {
@@ -16,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         references: {
           model: 'Users',
-          key: 'id'
+          key: 'user_id'
         }
       }
     },
