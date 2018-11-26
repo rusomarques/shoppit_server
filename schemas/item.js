@@ -3,10 +3,11 @@ module.exports = (sequelize, DataTypes) => {
   const Item = sequelize.define(
     'Item',
     {
-      // item_id: {
-      //   allowNull: false,
-      //   type: DataTypes.INTEGER
-      // },
+      item_id: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
       item_name: {
         allowNull: false,
         type: DataTypes.STRING
