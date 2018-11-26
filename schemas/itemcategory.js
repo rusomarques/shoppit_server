@@ -1,4 +1,7 @@
 'use strict';
+
+// TODO: delete me, as this table is automatically created by Sequelize
+
 module.exports = (sequelize, DataTypes) => {
   const ItemCategory = sequelize.define(
     'ItemCategory',
