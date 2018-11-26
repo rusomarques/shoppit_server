@@ -40,12 +40,12 @@ router
     '/items/:item_id/like/:value',
     authMiddleware,
     itemsController.setAffinity
-  )
-  .delete(
-    '/items/:item_id/like/',
-    authMiddleware,
-    itemsController.removeAffinity
   );
+// .delete(
+//   '/items/:item_id/like/',
+//   authMiddleware,
+//   itemsController.removeAffinity
+// );
 
 // Category controllers
 router
