@@ -29,7 +29,7 @@
     },
     {
       "item_id": 1235,
-      "item_name": "NC-17 Product",
+      "item_name": "Big sock monkey",
       "img_url": "https://i.imgur.com/AFOpn2F.jpg",
       "amazon_url": "https://www.amazon.com/Schylling-SSM-Sock-Monkey/dp/B0013JEAO4/ref=sr_1_4?ie=UTF8&qid=1543002432&sr=8-4&keywords=sock+monkey",
       "price": "$40"
@@ -40,16 +40,31 @@
       "img_url": "https://i.imgur.com/JveKVrZ.png?1",
       "amazon_url": "https://www.amazon.com/LovesTown-Different-Outdoor-Protector-Storage/dp/B072M4DQ45/ref=sr_1_2?ie=UTF8&qid=1543002605&sr=8-2&keywords=banana+bunker",
       "price": "$5"
+    },
+    {
+      "item_id": 1237,
+      "item_name": "Cool book",
+      "img_url": "https://i.imgur.com/JveKVrZ.png?1",
+      "amazon_url": "https://www.amazon.com/LovesTown-Different-Outdoor-Protector-Storage/dp/B072M4DQ45/ref=sr_1_2?ie=UTF8&qid=1543002605&sr=8-2&keywords=banana+bunker",
+      "price": "$14"
     }
   ],
   "categories": [
     {
       "category_id": 1,
-      "category_name": "Sports"
+      "category_name": "Toys"
     },
     {
       "category_id": 2,
       "category_name": "Sneakers"
+    },
+    {
+      "category_id": 3,
+      "category_name": "Books"
+    },
+    {
+      "category_id": 4,
+      "category_name": "Kitchen"
     }
   ]
 }
