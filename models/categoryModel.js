@@ -3,26 +3,41 @@ const categoryModel = {};
 const db = require('./../schemas');
 
 categoryModel.getAll = async () => {
-  const categories = await db.Category.findAll();
-  const allCats = categories.map(cat => cat.dataValues);
-  // console.log('all cats! 🐈', allCats);
-  return allCats;
+  const categories = await db.Category.findAll({
+    raw: true
+  });
+  console.log('all cats 🐈', categories);
+  return categories;
 };
 
 categoryModel.getAllItems = async category_id => {
-  const items = await db.ItemCategory.findAll({
-    where: { category_id },
+  const items = await db.Item.findAll({
     include: [
       {
-        model: db.Item,
-        as: 'item'
+        model: db.Category,
+        as: 'category',
+        where: { category_id }
       }
-    ]
+    ],
+    raw: true
   });
-  const itemsInCategory = items.map(join => join.dataValues.item.dataValues);
-  console.log('items in this category', itemsInCategory);
-  return itemsInCategory;
+  return items;
 };
+
+// categoryModel.getAllItems = async category_id => {
+//   const items = await db.ItemCategory.findAll({
+//     where: { category_id },
+//     include: [
+//       {
+//         model: db.Item,
+//         as: 'item'
+//       }
+//     ]
+//   });
+//   const itemsInCategory = items.map(join => join.dataValues.item.dataValues);
+//   console.log('items in this category', itemsInCategory);
+//   return itemsInCategory;
+// };
 
 // try this approach
 // const items = await db.ItemCategory.findAll({
