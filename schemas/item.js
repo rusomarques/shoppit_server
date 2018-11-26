@@ -3,6 +3,10 @@ module.exports = (sequelize, DataTypes) => {
   const Item = sequelize.define(
     'Item',
     {
+      // item_id: {
+      //   allowNull: false,
+      //   type: DataTypes.INTEGER
+      // },
       item_name: {
         allowNull: false,
         type: DataTypes.STRING
@@ -23,15 +27,15 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Item.associate = function(models) {
-    Item.belongsToMany(models.UserItem, {
+    Item.belongsToMany(models.User, {
       through: models.UserItem,
       as: 'user',
       foreignKey: 'item_id'
     });
-    Item.belongsToMany(models.ItemCategory, {
+    Item.belongsToMany(models.Category, {
       through: models.ItemCategory,
       as: 'category',
-      foreignKey: 'category_id'
+      foreignKey: 'item_id'
     });
   };
   return Item;

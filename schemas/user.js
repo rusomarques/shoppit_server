@@ -32,12 +32,12 @@ module.exports = (sequelize, DataTypes) => {
       as: 'user_2',
       foreignKey: 'user_2_id'
     });
-    User.belongsToMany(models.UserItem, {
+    User.belongsToMany(models.Item, {
       through: models.UserItem,
       as: 'item',
       foreignKey: 'user_id'
     });
-    User.belongsToMany(models.UserCategory, {
+    User.belongsToMany(models.Category, {
       through: models.UserCategory,
       as: 'category',
       foreignKey: 'user_id'

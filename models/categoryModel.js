@@ -3,8 +3,8 @@ const categoryModel = {};
 const db = require('./../schemas');
 
 categoryModel.getAll = async () => {
-  const categories = await db.Category.findAll;
-  console.log(categories);
+  const categories = await db.Category.findAll();
+  console.log('here are categories', categories);
 };
 
 categoryModel.getAll();
