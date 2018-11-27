@@ -10,22 +10,6 @@ itemModel.setItemsfromCategory = async bulk => {
   }
 };
 
-itemModel.getAllbyCagtegory = async catId => {
-  const items = await db.Item.findAll({
-    raw: true,
-    include: [
-      {
-        model: db.Category,
-        as: 'category',
-        where: {
-          category_id: catId
-        }
-      }
-    ]
-  });
-  return items;
-};
-
 itemModel.getRecommended = async () => {};
 
 itemModel.setAffinity = async (user_id, item_id, affinity) => {
