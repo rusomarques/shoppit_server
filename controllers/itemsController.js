@@ -34,21 +34,20 @@ itemsController.setItemsfromCategory = async (
 itemsController.getRecommended = async (req, res) => {
   try {
     // user id may not be in req.body
-    const { user_id } = req.body;
-    const result = {
-      user_id
-    };
+    const { user_id } = req.headers;
+    const result = { user_id };
     result.items = await Item.getRecommended(user_id);
     res.send(result).sendStatus(200);
   } catch (e) {
     console.log(e); // eslint-disable-line no-console
+    res.sendStatus(400);
   }
 };
 
 itemsController.setAffinity = async (req, res) => {
   try {
     // user id may not be in req.body
-    const { user_id } = req.body;
+    const { user_id } = req.headers;
 
     const item_id = parseInt(req.params.item_id);
     let affinity = req.params.value;
