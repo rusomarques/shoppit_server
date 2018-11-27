@@ -16,6 +16,7 @@ usersController.getOwnInfo = async (req, res) => {
     res.send(info).sendStatus(200);
   } catch (e) {
     console.log(e);
+    res.sendStatus(400);
   }
 };
 
@@ -27,6 +28,7 @@ usersController.getFriends = async (req, res) => {
     res.send(friendsList).sendStatus(200);
   } catch (e) {
     console.log(e);
+    res.sendStatus(400);
   }
 };
 
@@ -38,6 +40,7 @@ usersController.addCategory = async (req, res) => {
     res.sendStatus(201);
   } catch (e) {
     console.log(e);
+    res.sendStatus(400);
   }
 };
 
@@ -49,6 +52,7 @@ usersController.removeCategory = async (req, res) => {
     res.sendStatus(204);
   } catch (e) {
     console.log(e);
+    res.sendStatus(400);
   }
 };
 
@@ -60,6 +64,7 @@ usersController.getLikedItems = async (req, res) => {
     res.send(likedItems).sendStatus(200);
   } catch (e) {
     console.log(e);
+    res.sendStatus(400);
   }
 };
 
