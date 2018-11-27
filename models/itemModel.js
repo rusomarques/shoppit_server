@@ -1,4 +1,5 @@
 const db = require('./../schemas');
+const _ = require('lodash');
 
 const itemModel = {};
 
@@ -15,17 +16,26 @@ itemModel.getRecommended = async user_id => {
     where: { user_id }
   });
   const categories = await user.getCategory();
-
-  const items = await Promise.all(
+  const flatten = [];
+  await Promise.all(
     categories.map(async category => {
-      return await category.getItem({ raw: true });
+      const cat = await category.getItem();
+      flatten.push(...cat);
     })
   );
 
-  console.log(items); // eslint-disable-line no-console
-};
+  const filtered = _.uniqBy(flatten, 'item_id');
 
-itemModel.getRecommended(1);
+  const itemFeed = [];
+  await Promise.all(
+    filtered.map(async item => {
+      const product = await item.getUser({ where: { user_id } });
+      if (!product.length) itemFeed.push(item);
+    })
+  );
+
+  return JSON.stringify(_.shuffle(itemFeed));
+};
 
 itemModel.setAffinity = async (user_id, item_id, affinity) => {
   const user = await db.User.findOne({
