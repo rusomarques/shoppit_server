@@ -30,3 +30,12 @@ seedController.setItemsfromCategory = async (
     console.log(e); // eslint-disable-line no-console
   }
 };
+
+seedController.setCategories = async data => {
+  try {
+    const bulk = data.categories;
+    await Seed.setCategories(bulk);
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
+  }
+};
