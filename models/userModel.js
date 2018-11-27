@@ -34,7 +34,7 @@ userModel.getFriends = async user_id => {
   const user1Friends = await me.getUser_1();
   const user2Friends = await me.getUser_2();
   // console.log('🌟', JSON.stringify(user1Friends.concat(user2Friends)));
-  return JSON.stringify(user1Friends.concat(user2Friends));
+  return user1Friends.concat(user2Friends);
 };
 
 userModel.addCategory = async (user_id, category_id) => {

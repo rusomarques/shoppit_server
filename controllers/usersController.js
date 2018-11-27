@@ -1,15 +1,31 @@
 /* eslint-disable no-console */
 const usersController = {};
-// const User = require('./../models/userModel');
+const User = require('./../models/userModel');
+
+usersController.createUser = async (req, res) => {
+  // do stuff;
+  console.log('usersController.createUser firing', req, res);
+};
 
 usersController.getOwnInfo = async (req, res) => {
-  // do stuff;
-  console.log('usersController.getOwnInfo firing', req, res);
+  // authentication through headers?
+  try {
+    const { user_id } = req.headers;
+    const info = await User.getOwnInfo(user_id);
+    res.send(info).sendStatus(200);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 usersController.getFriends = async (req, res) => {
-  // do stuff;
-  console.log('usersController.getFriends firing', req, res);
+  try {
+    const { user_id } = req.headers;
+    const friends = await User.getFriends(user_id);
+    res.send(friends).sendStatus(200);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 usersController.addCategory = async (req, res) => {
