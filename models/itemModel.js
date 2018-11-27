@@ -34,7 +34,7 @@ itemModel.getRecommended = async user_id => {
     })
   );
 
-  return JSON.stringify(_.shuffle(itemFeed));
+  return _.shuffle(itemFeed);
 };
 
 itemModel.setAffinity = async (user_id, item_id, affinity) => {
