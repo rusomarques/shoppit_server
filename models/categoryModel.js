@@ -14,9 +14,13 @@ categoryModel.getAllItems = async category_id => {
   const category = await db.Category.findOne({
     where: { category_id }
   });
-  const items = await category.getItem();
-  // console.log('wowwww', JSON.stringify(items));
-  return JSON.stringify(items);
+
+  const categoryItems = {};
+  const catProp = category.get({ plain: true }).category_name;
+  const itemsKey = await category.getItem();
+
+  categoryItems[catProp] = itemsKey;
+  return categoryItems;
 };
 
 // categoryModel.getAll();
