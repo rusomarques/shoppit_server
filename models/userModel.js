@@ -3,8 +3,9 @@
 const userModel = {};
 const db = require('./../schemas');
 
-userModel.createUser = async () => {
-  // idk yet we gotta do something cool here
+userModel.createUser = async userInfo => {
+  const createdUser = await db.User.create({ ...userInfo });
+  console.log('🙋‍♀️ new user!!', createdUser);
 };
 
 userModel.getOwnInfo = async user_id => {
@@ -67,10 +68,21 @@ userModel.getLikedItems = async user_id => {
   return likedItems;
 };
 
+// const newUser = {
+//   user_id: 6,
+//   first_name: 'Pineapple',
+//   last_name: 'Pine',
+//   gender: 'other',
+//   birthday: new Date(),
+//   avatar_url: 'https://cool.com/iamapine.jpg',
+//   email: 'appleapple@fruit.com'
+// };
+
+// userModel.createUser(newUser);
 // userModel.getOwnInfo(1);
 // userModel.getFriends(1);
 // userModel.getLikedItems(1);
-userModel.addCategory(2, 2);
+// userModel.addCategory(2, 2);
 // userModel.removeCategory(2, 2);
 
 module.exports = userModel;
