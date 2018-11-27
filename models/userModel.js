@@ -2,7 +2,6 @@
 
 const userModel = {};
 const db = require('./../schemas');
-const Op = require('Sequelize').Op;
 
 userModel.createUser = async () => {
   // idk yet we gotta do something cool here
@@ -27,30 +26,18 @@ userModel.getOwnInfo = async user_id => {
 
   // return object with basic info, categories
   return userInfo.get({ plain: true });
+  // console.log(lala.category[0].UserCategory);
 };
 
 userModel.getFriends = async user_id => {
-  const friends = await db.User.findAll({
-    include: [
-      {
-        association: db.Friend,
-        // attributes: ['first_name'],
-        where: {
-          [Op.or]: [{ user_1_id: user_id }, { user_2_id: user_id }]
-        }
-      }
-    ]
-    // include: [
-    //   {
-    //     model: db.User,
-    //     as: 'user'
-    //   }
-    // ]
+  const me = await db.User.findOne({
+    where: { user_id }
   });
-  console.log('my friends', friends);
-  // get array of friends' basic info
-  // get friends' liked categories
-  // return array of objects with friends' basic info, categories
+
+  const user1Friends = await me.getUser_1();
+  const user2Friends = await me.getUser_2();
+  // console.log('🌟', JSON.stringify(user1Friends.concat(user2Friends)));
+  return JSON.stringify(user1Friends.concat(user2Friends));
 };
 
 // userModel.addCategory = async (user_id, category_id) => {
@@ -82,7 +69,7 @@ userModel.getLikedItems = async user_id => {
 };
 
 // userModel.getOwnInfo(1);
-// userModel.getFriends(1);
-userModel.getLikedItems(1);
+userModel.getFriends(1);
+// userModel.getLikedItems(1);
 
 module.exports = userModel;

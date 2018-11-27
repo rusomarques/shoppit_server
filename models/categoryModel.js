@@ -6,22 +6,17 @@ categoryModel.getAll = async () => {
   const categories = await db.Category.findAll({
     raw: true
   });
-  console.log('all cats 🐈', categories);
+  // console.log('all cats 🐈', categories);
   return categories;
 };
 
 categoryModel.getAllItems = async category_id => {
-  const items = await db.Item.findAll({
-    include: [
-      {
-        model: db.Category,
-        as: 'category',
-        where: { category_id }
-      }
-    ],
-    raw: true
+  const category = await db.Category.findOne({
+    where: { category_id }
   });
-  return items;
+  const items = await category.getItem();
+  // console.log('wowwww', JSON.stringify(items));
+  return JSON.stringify(items);
 };
 
 // categoryModel.getAll();
