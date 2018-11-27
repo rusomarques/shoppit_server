@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
-const itemModel = require('./../models/itemModel');
+const Item = require('./../models/itemModel');
 const scrape = require('./../scrape/get-items');
 
 const itemsController = {};
-// const Item = require('./../models/itemModel');
 
 itemsController.setItemsfromCategory = async (
   mainCategory,
@@ -27,25 +25,41 @@ itemsController.setItemsfromCategory = async (
       createdAt: new Date(),
       updatedAt: new Date()
     }));
-    await itemModel.setItemsfromCategory(bulk);
-  } catch (error) {
-    console.log(error);
+    await Item.setItemsfromCategory(bulk);
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
   }
 };
 
 itemsController.getRecommended = async (req, res) => {
-  // do stuff;
-  console.log('itemsController.getRecommended firing', req, res);
+  try {
+    // user id may not be in req.body
+    const { user_id } = req.headers;
+    const result = { user_id };
+    result.items = await Item.getRecommended(user_id);
+    res.send(result).sendStatus(200);
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
+    res.sendStatus(400);
+  }
 };
 
 itemsController.setAffinity = async (req, res) => {
-  // do stuff;
-  console.log('itemsController.setAffinity firing', req, res);
-};
+  try {
+    // user id may not be in req.body
+    const { user_id } = req.headers;
 
-itemsController.removeAffinity = async (req, res) => {
-  // do stuff;
-  console.log('itemsController.removeAffinity firing', req, res);
+    const item_id = parseInt(req.params.item_id);
+    let affinity = req.params.value;
+    if (affinity === 'true') affinity = true;
+    else if (affinity === 'false') affinity = false;
+    else throw new Error('affinity must be true or false');
+    await Item.setAffinity(user_id, item_id, affinity);
+    res.sendStatus(201);
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
+    res.sendStatus(400);
+  }
 };
 
 module.exports = itemsController;
