@@ -3,12 +3,7 @@ const scrape = require('./../scrape/get-items');
 
 const seedController = {};
 
-seedController.setItemsfromCategory = async (
-  mainCategory,
-  category,
-  limit,
-  offset
-) => {
+seedController.seedItems = async (mainCategory, category, limit, offset) => {
   try {
     const data = await scrape.getCategoryItems(
       mainCategory,
@@ -25,16 +20,16 @@ seedController.setItemsfromCategory = async (
       createdAt: new Date(),
       updatedAt: new Date()
     }));
-    await Seed.setItemsfromCategory(bulk);
+    await Seed.seedItems(bulk);
   } catch (e) {
     console.log(e); // eslint-disable-line no-console
   }
 };
 
-seedController.setCategories = async data => {
+seedController.seedCategories = async data => {
   try {
     const bulk = data.categories;
-    await Seed.setCategories(bulk);
+    await Seed.seed(bulk);
   } catch (e) {
     console.log(e); // eslint-disable-line no-console
   }

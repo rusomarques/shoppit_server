@@ -2,12 +2,17 @@ const db = require('./../schemas');
 
 const seedModel = {};
 
-seedModel.setItemsfromCategory = async bulk => {
+seedModel.seedItems = async bulk => {
   await db.Item.bulkCreate(bulk);
 };
 
-seedModel.setCategories = async bulk => {
+seedModel.seedCategories = async bulk => {
   await db.Category.bulkCreate(bulk);
+};
+
+// seed join table:
+seedModel.seedItemCategories = async bulk => {
+  await db.ItemCategory.bulkCreate(bulk);
 };
 
 module.exports = seedModel;
