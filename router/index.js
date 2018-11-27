@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usersController = require('./../controllers/usersController');
 const categoriesController = require('./../controllers/categoriesController');
-// const itemsController = require('./../controllers/itemsController');
+const itemsController = require('./../controllers/itemsController');
 // to authenticate user identity
 // const authMiddleware = require('./../middlewares/authMiddleware');
 
@@ -22,11 +22,11 @@ router
   .post('/register', usersController.createUser)
   .get('/users/:user_id/items', usersController.getLikedItems);
 
-// // Item controllers
-// router
-//   // get the array of recommended items for authenticated user
-//   .get('/items/recommended',  itemsController.getRecommended)
-//   .put('/items/:item_id/like/:value', itemsController.setAffinity);
+// Item controllers
+router
+  // get the array of recommended items for authenticated user
+  .get('/items/recommended', itemsController.getRecommended)
+  .put('/items/:item_id/like/:value', itemsController.setAffinity);
 
 // Category controllers
 router
