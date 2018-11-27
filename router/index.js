@@ -26,11 +26,9 @@ router
 // .delete('/me/friends', user.deleteFriend)
 
 // User controllers
-router.get(
-  '/users/:user_id/items',
-  authMiddleware,
-  usersController.getLikedItems
-);
+router
+  .post('/register', usersController.createUser)
+  .get('/users/:user_id/items', authMiddleware, usersController.getLikedItems);
 
 // Item controllers
 router
@@ -41,11 +39,6 @@ router
     authMiddleware,
     itemsController.setAffinity
   );
-// .delete(
-//   '/items/:item_id/like/',
-//   authMiddleware,
-//   itemsController.removeAffinity
-// );
 
 // Category controllers
 router
