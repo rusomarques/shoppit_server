@@ -8,6 +8,7 @@ categoriesController.getAll = async (req, res) => {
     res.send(categories).sendStatus(200);
   } catch (e) {
     console.log(e);
+    res.sendStatus(400);
   }
 };
 
@@ -18,6 +19,7 @@ categoriesController.getAllItems = async (req, res) => {
     res.send(items).sendStatus(200);
   } catch (e) {
     console.log(e);
+    res.sendStatus(400);
   }
 };
 
