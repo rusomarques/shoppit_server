@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
-const itemModel = require('./../models/itemModel');
+const Item = require('./../models/itemModel');
 const scrape = require('./../scrape/get-items');
 
 const itemsController = {};
-// const Item = require('./../models/itemModel');
 
 itemsController.setItemsfromCategory = async (
   mainCategory,
@@ -27,25 +25,25 @@ itemsController.setItemsfromCategory = async (
       createdAt: new Date(),
       updatedAt: new Date()
     }));
-    await itemModel.setItemsfromCategory(bulk);
-  } catch (error) {
-    console.log(error);
+    await Item.setItemsfromCategory(bulk);
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
   }
 };
 
 itemsController.getRecommended = async (req, res) => {
-  // do stuff;
-  console.log('itemsController.getRecommended firing', req, res);
+  try {
+    const { user_id } = req.body;
+    const result = {
+      user_id
+    };
+    result.items = await Item.getRecommended(user_id);
+    res.send(result).status(200);
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
+  }
 };
 
-itemsController.setAffinity = async (req, res) => {
-  // do stuff;
-  console.log('itemsController.setAffinity firing', req, res);
-};
-
-itemsController.removeAffinity = async (req, res) => {
-  // do stuff;
-  console.log('itemsController.removeAffinity firing', req, res);
-};
+itemsController.setAffinity = async () => {};
 
 module.exports = itemsController;
