@@ -4,6 +4,7 @@ const User = require('./../models/userModel');
 
 usersController.createUser = async (req, res) => {
   // do stuff;
+  // need to do authentication stuffffff
   console.log('usersController.createUser firing', req, res);
 };
 
@@ -21,8 +22,9 @@ usersController.getOwnInfo = async (req, res) => {
 usersController.getFriends = async (req, res) => {
   try {
     const { user_id } = req.headers;
-    const friends = await User.getFriends(user_id);
-    res.send(friends).sendStatus(200);
+    const friendsList = { user_id };
+    friendsList.friends = await User.getFriends(user_id);
+    res.send(friendsList).sendStatus(200);
   } catch (e) {
     console.log(e);
   }
