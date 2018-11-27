@@ -36,13 +36,25 @@ userModel.getFriends = async user_id => {
   return JSON.stringify(user1Friends.concat(user2Friends));
 };
 
-// userModel.addCategory = async (user_id, category_id) => {
-//   // create UserCategory join entry
-// };
+userModel.addCategory = async (user_id, category_id) => {
+  const created = await db.UserCategory.findOrCreate({
+    where: {
+      user_id,
+      category_id
+    }
+  });
+  console.log('created!!', JSON.stringify(created));
+};
 
-// userModel.removeCategory = async (user_id, category_id) => {
-//   // delete UserCategory join entry
-// };
+userModel.removeCategory = async (user_id, category_id) => {
+  const lala = await db.UserCategory.destroy({
+    where: {
+      user_id,
+      category_id
+    }
+  });
+  console.log('deleted!', JSON.stringify(lala));
+};
 
 userModel.getLikedItems = async user_id => {
   const user = await db.User.findOne({
@@ -57,6 +69,8 @@ userModel.getLikedItems = async user_id => {
 
 // userModel.getOwnInfo(1);
 // userModel.getFriends(1);
-userModel.getLikedItems(1);
+// userModel.getLikedItems(1);
+userModel.addCategory(2, 2);
+// userModel.removeCategory(2, 2);
 
 module.exports = userModel;
