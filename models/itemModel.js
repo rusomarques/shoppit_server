@@ -23,17 +23,19 @@ itemModel.getAllbyCagtegory = async catId => {
       }
     ]
   });
-  console.log(items); // eslint-disable-line no-console
+  return items;
 };
-
-itemModel.getAllbyCagtegory(4);
 
 itemModel.getRecommended = async () => {};
 
-itemModel.setAffinity = async () => {};
+itemModel.setAffinity = async (user_id, item_id, affinity) => {
+  await db.UserItem.create({
+    user_id,
+    item_id,
+    affinity
+  });
+};
 
 itemModel.removeAffinity = async () => {};
-
-// itemModel.getCategories();
 
 module.exports = itemModel;
