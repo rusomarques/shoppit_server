@@ -4,8 +4,8 @@ const userModel = {};
 const db = require('./../schemas');
 
 userModel.createUser = async userInfo => {
-  const createdUser = await db.User.create({ ...userInfo });
-  console.log('🙋‍♀️ new user!!', createdUser);
+  await db.User.create({ ...userInfo });
+  // console.log('🙋‍♀️ new user!!', createdUser);
 };
 
 userModel.getOwnInfo = async user_id => {
@@ -21,8 +21,6 @@ userModel.getOwnInfo = async user_id => {
     ]
   });
 
-  // console.log('userinfoooo', userInfo.get({ plain: true }));
-  // return object with basic info, categories
   return userInfo.get({ plain: true });
 };
 
@@ -33,7 +31,6 @@ userModel.getFriends = async user_id => {
 
   const user1Friends = await me.getUser_1();
   const user2Friends = await me.getUser_2();
-  // console.log('🌟', JSON.stringify(user1Friends.concat(user2Friends)));
   return user1Friends.concat(user2Friends);
 };
 
@@ -64,7 +61,6 @@ userModel.getLikedItems = async user_id => {
   const allItems = await user.getItem();
   const likedItems = allItems.filter(item => item.UserItem.affinity === true);
 
-  // console.log('🎁 like', JSON.stringify(likedItems));
   return likedItems;
 };
 
@@ -79,10 +75,5 @@ userModel.getLikedItems = async user_id => {
 // };
 
 // userModel.createUser(newUser);
-// userModel.getOwnInfo(1);
-// userModel.getFriends(1);
-// userModel.getLikedItems(1);
-// userModel.addCategory(2, 2);
-// userModel.removeCategory(2, 2);
 
 module.exports = userModel;

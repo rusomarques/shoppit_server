@@ -29,18 +29,36 @@ usersController.getFriends = async (req, res) => {
 };
 
 usersController.addCategory = async (req, res) => {
-  // do stuff;
-  console.log('usersController.addCategory firing', req, res);
+  try {
+    const { user_id } = req.headers;
+    const category_id = req.params.category_id;
+    await User.addCategory(user_id, category_id);
+    res.sendStatus(201);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 usersController.removeCategory = async (req, res) => {
-  // do stuff;
-  console.log('usersController.removeCategory firing', req, res);
+  try {
+    const { user_id } = req.headers;
+    const category_id = req.params.category_id;
+    await User.removeCategory(user_id, category_id);
+    res.sendStatus(204);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 usersController.getLikedItems = async (req, res) => {
-  // do stuff;
-  console.log('usersController.getLikedItems firing', req, res);
+  try {
+    const user_id = parseInt(req.params.user_id);
+    const likedItems = { user_id };
+    likedItems.likes = await User.getLikedItems(user_id);
+    res.send(likedItems).sendStatus(200);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 module.exports = usersController;
