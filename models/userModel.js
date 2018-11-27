@@ -8,10 +8,8 @@ userModel.createUser = async () => {
 };
 
 userModel.getOwnInfo = async user_id => {
-  // get basic info
   const userInfo = await db.User.findOne({
     where: { user_id },
-    // include user's liked categories
     include: [
       {
         model: db.Category,
@@ -22,11 +20,9 @@ userModel.getOwnInfo = async user_id => {
     ]
   });
 
-  console.log('userinfoooo', userInfo.get({ plain: true }));
-
+  // console.log('userinfoooo', userInfo.get({ plain: true }));
   // return object with basic info, categories
   return userInfo.get({ plain: true });
-  // console.log(lala.category[0].UserCategory);
 };
 
 userModel.getFriends = async user_id => {
@@ -44,32 +40,23 @@ userModel.getFriends = async user_id => {
 //   // create UserCategory join entry
 // };
 
-// userModel.addCategory = async (user_id, category_id) => {
+// userModel.removeCategory = async (user_id, category_id) => {
 //   // delete UserCategory join entry
 // };
 
 userModel.getLikedItems = async user_id => {
-  const likedItems = await db.Item.findAll({
-    include: [
-      {
-        model: db.User,
-        as: 'user',
-        where: { user_id }
-        // where: {
-        //   [Op.and]: [{ user_id }, { affinity: true }]
-        // }
-        // attributes: ['affinity']
-      }
-    ],
-    raw: true
+  const user = await db.User.findOne({
+    where: { user_id }
   });
-  console.log('ilykdis', likedItems);
+  const allItems = await user.getItem();
+  const likedItems = allItems.filter(item => item.UserItem.affinity === true);
+
+  // console.log('🎁 like', JSON.stringify(likedItems));
   return likedItems;
-  // get items from UserItem table
 };
 
 // userModel.getOwnInfo(1);
-userModel.getFriends(1);
-// userModel.getLikedItems(1);
+// userModel.getFriends(1);
+userModel.getLikedItems(1);
 
 module.exports = userModel;
