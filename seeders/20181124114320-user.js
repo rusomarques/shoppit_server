@@ -11,6 +11,7 @@ module.exports = {
       birthday: user.birthday,
       avatar_url: user.avatar_url,
       email: user.email,
+      accessToken: user.accessToken,
       createdAt: new Date(),
       updatedAt: new Date()
     }));

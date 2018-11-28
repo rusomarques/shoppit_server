@@ -7,7 +7,8 @@
       "gender": "female",
       "birthday": "01-11-1460",
       "email": "lukesmells@cool.com",
-      "avatar_url": "https://i.imgur.com/MU2dD8E.jpg"
+      "avatar_url": "https://i.imgur.com/MU2dD8E.jpg",
+      "accessToken": "dasfghdjnqwihfadsfdsfsdfsdjsbjaHEY"
     },
     {
       "user_id": "2",
@@ -16,7 +17,8 @@
       "gender": "female",
       "birthday": "06-18-1540",
       "email": "catsarecool@cool.com",
-      "avatar_url": "https://i.imgur.com/z3bJzUi.jpg"
+      "avatar_url": "https://i.imgur.com/z3bJzUi.jpg",
+      "accessToken": "meowmeowmeowmeowmeowwwwwwwwwhehe"
     },
     {
       "user_id": "3",
@@ -25,7 +27,8 @@
       "gender": "male",
       "birthday": "03-08-1440",
       "email": "potato@potato.com",
-      "avatar_url": "https://i.imgur.com/HjQ0GIF.png"
+      "avatar_url": "https://i.imgur.com/HjQ0GIF.png",
+      "accessToken": "crynchycrynchyAYAYAhdjaslkjdkalspotato"
     },
     {
       "user_id": "4",
@@ -34,7 +37,8 @@
       "gender": "male",
       "birthday": "11-09-1840",
       "email": "mean@guy.com",
-      "avatar_url": "https://i.imgur.com/ZT0lxJC.jpg"
+      "avatar_url": "https://i.imgur.com/ZT0lxJC.jpg",
+      "accessToken": "soMEANgrrrrrrjakldfjkalsjfalkKKKAAjd"
     }
   ],
   "items": [
