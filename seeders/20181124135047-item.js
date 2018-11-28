@@ -1,13 +1,14 @@
 'use strict';
-const data = require('./db.json');
+// const data = require('./db.json');
+const realData = require('./../scrape/data/seed-real-data.json');
 
 module.exports = {
   up: queryInterface => {
-    const items = data.items.map(item => ({
-      item_id: item.item_id,
-      item_name: item.item_name,
-      img_url: item.img_url,
-      amazon_url: item.amazon_url,
+    const items = realData.items.map(item => ({
+      item_id: item.id,
+      item_name: item.name,
+      img_url: item.image,
+      amazon_url: item.amazon_link,
       price: item.price,
       createdAt: new Date(),
       updatedAt: new Date()
