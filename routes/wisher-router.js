@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const usersController = require('./../controllers/usersController');
-const categoriesController = require('./../controllers/categoriesController');
-const itemsController = require('./../controllers/itemsController');
+const usersController = require('../controllers/usersController');
+const categoriesController = require('../controllers/categoriesController');
+const itemsController = require('../controllers/itemsController');
 
 // (User) me controllers
 router

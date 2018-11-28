@@ -5,7 +5,7 @@ module.exports = {
   facebook: {
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3333/SOMEPATHHERE',
+    callbackURL: '/auth/facebook/redirect',
     profileFields: [
       'id',
       'first_name',

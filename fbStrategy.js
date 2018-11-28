@@ -1,11 +1,11 @@
 const passport = require('passport');
-const { FacebookStrategy } = require('passport-facebook');
+const FacebookStrategy = require('passport-facebook').Strategy;
 const {
   clientID,
   clientSecret,
   callbackURL,
   profileFields
-} = require('./config');
+} = require('./config').facebook;
 
 passport.use(
   new FacebookStrategy(
