@@ -4,7 +4,7 @@ module.exports = {
     return queryInterface.createTable('UserCategories', {
       user_id: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       category_id: {
         allowNull: false,
