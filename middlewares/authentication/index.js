@@ -1,8 +1,18 @@
 /* eslint-disable-next-line no-console */
-console.log('🔐 authMiddleware running!');
+const express = require('express');
+const router = express.Router();
+const passport = require('./passport');
 
-// router.get('/auth/facebook', passportt.djfklsdjfkls {
-//   scope: ['profile']
-// })
+router.get('/auth/facebook', passport.authenticate('facebook'));
 
-// this is the router for the authentication routes!
+router.get(
+  '/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  })
+);
+
+// add routes for login/logout
+
+module.exports = router;
