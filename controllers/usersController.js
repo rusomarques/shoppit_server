@@ -23,9 +23,8 @@ usersController.getOwnInfo = async (req, res) => {
 usersController.getFriends = async (req, res) => {
   try {
     const { user_id } = req.headers;
-    const friendsList = { user_id };
-    friendsList.friends = await User.getFriends(user_id);
-    res.send(friendsList).sendStatus(200);
+    const result = await User.getFriends(user_id);
+    res.send(result).sendStatus(200);
   } catch (e) {
     console.log(e);
     res.sendStatus(400);
