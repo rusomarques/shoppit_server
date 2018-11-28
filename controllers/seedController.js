@@ -29,8 +29,19 @@ seedController.seedItems = async (mainCategory, category, limit, offset) => {
 seedController.seedCategories = async data => {
   try {
     const bulk = data.categories;
-    await Seed.seed(bulk);
+    await Seed.seedCategories(bulk);
   } catch (e) {
     console.log(e); // eslint-disable-line no-console
   }
 };
+
+seedController.seedItemCategories = async data => {
+  try {
+    const bulk = data.itemCategories;
+    await Seed.seedItemCategories(bulk);
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
+  }
+};
+
+module.exports = seedController;
