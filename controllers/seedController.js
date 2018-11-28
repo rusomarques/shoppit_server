@@ -1,16 +1,10 @@
 const Seed = require('./../models/seedModel');
-const scrape = require('../scrape/get-items-by-cat');
+// const realData = require('./../scrape/data/seed-real-data.json');
 
 const seedController = {};
 
-seedController.seedItems = async (mainCategory, category, limit, offset) => {
+seedController.seedItems = async data => {
   try {
-    const data = await scrape.getCategoryItems(
-      mainCategory,
-      category,
-      limit,
-      offset
-    );
     const bulk = data.items.map(item => ({
       item_id: item.id,
       item_name: item.name,
