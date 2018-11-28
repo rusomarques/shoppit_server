@@ -16,7 +16,7 @@ scrapeController.seed = async () => {
     for (let category in data) {
       db.categories.push({
         category_id: i,
-        category_name: category
+        category_name: renameCategory(category)
       });
 
       data[category].forEach(item => {
@@ -27,7 +27,6 @@ scrapeController.seed = async () => {
         });
       });
 
-      // tempItems.push(...data[category]);
       i++;
     }
 
@@ -49,6 +48,19 @@ scrapeController.seed = async () => {
         );
     }
   );
+};
+
+const renameCategory = name => {
+  if (name === 'for-her') return 'For her';
+  else if (name === 'for-him') return 'For him';
+  else if (name === 'for-mom') return 'For mom';
+  else if (name === 'for-dad') return 'For dad';
+  else if (name === 'for-kids') return 'For kids';
+  else {
+    const sanitize = name.replace(/for-the-/, '');
+    name = sanitize.charAt(0).toUpperCase() + sanitize.slice(1);
+  }
+  return name;
 };
 
 module.exports = scrapeController;
