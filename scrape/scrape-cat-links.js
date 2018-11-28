@@ -7,8 +7,8 @@ let db = {};
 
 const getCategoryLinks = async (mainCategory, limit, offset = 0) => {
   // read local db in links.json initialized as an empty object {}
-  await fs.readFile(__dirname + '/links.json', 'utf8', (err, data) => {
-    if (err) console.log('could not read links.json');
+  await fs.readFile(__dirname + '/data/links.json', 'utf8', (err, data) => {
+    if (err) console.log('could not read /data/links.json');
     else db = JSON.parse(data);
   });
 
@@ -38,10 +38,15 @@ const getCategoryLinks = async (mainCategory, limit, offset = 0) => {
   }
 
   // write to links.json (existing and new data)
-  fs.writeFile(__dirname + '/links.json', JSON.stringify(db), 'utf8', err => {
-    if (err) console.log('Not able to save to json');
-    else console.log(`${mainCategory} links saved to links.json`); // eslint-disable-line no-console
-  });
+  fs.writeFile(
+    __dirname + '/data/links.json',
+    JSON.stringify(db),
+    'utf8',
+    err => {
+      if (err) console.log('Not able to save to json');
+      else console.log(`${mainCategory} links saved to /data/links.json`); // eslint-disable-line no-console
+    }
+  );
 };
 
 getCategoryLinks('categories', 10, 0);

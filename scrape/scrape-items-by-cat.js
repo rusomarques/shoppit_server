@@ -6,7 +6,7 @@ let db = {};
 
 const getCategoryItems = async (category, limit = 12, offset = 0) => {
   // read local db in data.json initialized as an empty object {}
-  await fs.readFile(__dirname + '/data.json', 'utf8', (err, data) => {
+  await fs.readFile(__dirname + '/data/data.json', 'utf8', (err, data) => {
     if (err) console.log('could not read data.json');
     else db = JSON.parse(data);
   });
@@ -26,10 +26,15 @@ const getCategoryItems = async (category, limit = 12, offset = 0) => {
   }
 
   // write to data.json (existing and new data)
-  fs.writeFile(__dirname + '/data.json', JSON.stringify(db), 'utf8', err => {
-    if (err) console.log('Not able to save to json');
-    else console.log(`${limit} ${category} items saved to db`); // eslint-disable-line no-console
-  });
+  fs.writeFile(
+    __dirname + '/data/data.json',
+    JSON.stringify(db),
+    'utf8',
+    err => {
+      if (err) console.log('Not able to save to json');
+      else console.log(`${limit} ${category} items saved to db`); // eslint-disable-line no-console
+    }
+  );
 };
 
-getCategoryItems('for-the-curious', 10, 0);
+getCategoryItems('for-mom', 20, 0);

@@ -1,5 +1,5 @@
 const Seed = require('./../models/seedModel');
-const scrape = require('./../scrape/get-items');
+const scrape = require('../scrape/get-items-by-cat');
 
 const seedController = {};
 
