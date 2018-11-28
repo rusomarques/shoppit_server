@@ -23,8 +23,9 @@ usersController.getOwnInfo = async (req, res) => {
 usersController.getFriends = async (req, res) => {
   try {
     const { user_id } = req.headers;
-    const result = await User.getFriends(user_id);
-    res.send(result).sendStatus(200);
+    const friendsList = { user_id };
+    friendsList.friends = await User.getFriends(user_id);
+    res.send(friendsList).sendStatus(200);
   } catch (e) {
     console.log(e);
     res.sendStatus(400);
@@ -58,9 +59,8 @@ usersController.removeCategory = async (req, res) => {
 usersController.getLikedItems = async (req, res) => {
   try {
     const user_id = parseInt(req.params.user_id);
-    const likedItems = { user_id };
-    likedItems.likes = await User.getLikedItems(user_id);
-    res.send(likedItems).sendStatus(200);
+    const items = await User.getLikedItems(user_id);
+    res.send(items).sendStatus(200);
   } catch (e) {
     console.log(e);
     res.sendStatus(400);
