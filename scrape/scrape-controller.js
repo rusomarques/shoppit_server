@@ -6,20 +6,29 @@ const scrapeController = {};
 
 scrapeController.seed = async () => {
   const db = {
-    categories: []
+    categories: [],
+    itemCategories: []
   };
   const tempItems = [];
 
   try {
-    let i = 0;
+    let i = 1;
     for (let category in data) {
       db.categories.push({
         category_id: i,
         category_name: category
       });
-      i++;
 
-      tempItems.push(...data[category]);
+      data[category].forEach(item => {
+        tempItems.push(item);
+        db.itemCategories.push({
+          category_id: i,
+          item_id: item.id
+        });
+      });
+
+      // tempItems.push(...data[category]);
+      i++;
     }
 
     db.items = _.uniqBy(tempItems, 'id');
@@ -34,7 +43,10 @@ scrapeController.seed = async () => {
     e => {
       /* eslint-disable no-console */
       if (e) console.log(`could not save to json`);
-      else console.log(`categories saved to /data/seed-real-data.json`);
+      else
+        console.log(
+          `categories, items and itemCategories saved to seed-real-data.json`
+        );
     }
   );
 };
