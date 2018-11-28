@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
-const passport = require('passport');
 const db = require('./schemas');
-const FacebookStrategy = require('passport-facebook').Strategy;
 const {
   clientID,
   clientSecret,
   callbackURL,
   profileFields
 } = require('./config').facebook;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const passport = require('passport');
 
 passport.use(
   new FacebookStrategy(
@@ -18,15 +18,26 @@ passport.use(
       profileFields
     },
     async (accessToken, refreshToken, profile, done) => {
-      const data = profile._json;
+      let {
+        id,
+        first_name,
+        last_name,
+        birthday,
+        gender,
+        picture,
+        email
+      } = profile._json;
+      if (birthday) {
+        birthday = new Date(birthday);
+      }
       const newUser = await db.User.build({
-        user_id: data.id,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        gender: data.gender,
-        // birthday: data.birthday,
-        avatar_url: data.picture.data.url,
-        email: data.email
+        user_id: id,
+        first_name,
+        last_name,
+        gender,
+        birthday,
+        avatar_url: picture.data.url,
+        email
       });
       const createdUser = await newUser.save();
       console.log('🎄 created!', createdUser);
