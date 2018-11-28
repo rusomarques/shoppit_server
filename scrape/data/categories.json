@@ -1,0 +1,19 @@
+{
+  "categories": [
+    { "category_id": 0, "category_name": "for-her" },
+    { "category_id": 1, "category_name": "for-him" },
+    { "category_id": 2, "category_name": "for-the-abstract" },
+    { "category_id": 3, "category_name": "for-the-practical" },
+    { "category_id": 4, "category_name": "for-the-curious" },
+    { "category_id": 5, "category_name": "for-the-modern" },
+    { "category_id": 6, "category_name": "for-the-adventurous" },
+    { "category_id": 7, "category_name": "for-the-technical" },
+    { "category_id": 8, "category_name": "for-the-mindful" },
+    { "category_id": 9, "category_name": "for-the-pet" },
+    { "category_id": 10, "category_name": "for-the-athletic" },
+    { "category_id": 11, "category_name": "for-the-playful" },
+    { "category_id": 12, "category_name": "for-kids" },
+    { "category_id": 13, "category_name": "for-dad" },
+    { "category_id": 14, "category_name": "for-mom" }
+  ]
+}
