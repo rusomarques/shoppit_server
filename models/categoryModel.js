@@ -15,11 +15,7 @@ categoryModel.getAllItems = async category_id => {
     where: { category_id }
   });
 
-  const categoryItems = {};
-  const catProp = category.get({ plain: true }).category_name;
-  const itemsKey = await category.getItem();
-
-  categoryItems[catProp] = itemsKey;
+  const categoryItems = await category.getItem();
   return categoryItems;
 };
 
