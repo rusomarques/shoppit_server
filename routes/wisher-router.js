@@ -16,9 +16,7 @@ router
 // .delete('/me/friends', user.deleteFriend)
 
 // User controllers
-router
-  .post('/register', usersController.createUser)
-  .get('/users/:user_id/items', usersController.getLikedItems);
+router.get('/users/:user_id/items', usersController.getLikedItems);
 
 // Item controllers
 router

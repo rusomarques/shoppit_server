@@ -2,12 +2,6 @@
 const usersController = {};
 const User = require('./../models/userModel');
 
-usersController.createUser = async (req, res) => {
-  // do stuff;
-  // need to do authentication stuffffff
-  console.log('usersController.createUser firing', req, res);
-};
-
 usersController.getOwnInfo = async (req, res) => {
   // authentication through headers?
   try {
