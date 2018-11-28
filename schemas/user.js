@@ -1,4 +1,7 @@
 'use strict';
+// we should rename these fields to conform with the data that facebook auth gives us
+// check authentication/config.js
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
