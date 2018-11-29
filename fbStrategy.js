@@ -18,6 +18,7 @@ passport.use(
       profileFields
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log('📓📓📓📓📓📓 profile here', profile._json);
       let {
         id,
         first_name,
@@ -26,6 +27,7 @@ passport.use(
         gender,
         picture,
         email
+        // friends
       } = profile._json;
       if (birthday) {
         birthday = new Date(birthday);
@@ -39,6 +41,7 @@ passport.use(
         avatar_url: picture.data.url,
         email,
         accessToken
+        // fb_friends: friends.data[0]
       });
       const createdUser = await newUser.save();
       console.log('🎄 created!', createdUser);
@@ -54,3 +57,33 @@ passport.use(
 // passport.deserializeUser here
 
 module.exports = passport;
+
+// const profileJSON = {
+//   id: '10156795786766963',
+//   first_name: 'Amy',
+//   last_name: 'Kirasack',
+//   gender: 'female',
+//   birthday: '02/10/1991',
+//   email: 'amykirasack@gmail.com',
+//   picture: {
+//     data: {
+//       height: 50,
+//       is_silhouette: false,
+//       url:
+//         'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10156795786766963&height=50&width=50&ext=1546075310&hash=AeTktz1Rclki_O-J',
+//       width: 50
+//     }
+//   },
+//   friends: {
+//     data: [{ name: 'Leandro Marques', id: '10157898275884325' }],
+//     paging: {
+//       cursors: {
+//         before:
+//           'QVFIUnlqU1ByM2FRMHNudUJSb1dUaXQ4WmgtOFItWlVIalpkVXd4d0xVblA2NTBjZA09LaVV4cERsTkJ2bXFuQUk4MlYZD',
+//         after:
+//           'QVFIUnlqU1ByM2FRMHNudUJSb1dUaXQ4WmgtOFItWlVIalpkVXd4d0xVblA2NTBjZA09LaVV4cERsTkJ2bXFuQUk4MlYZD'
+//       }
+//     },
+//     summary: { total_count: 725 }
+//   }
+// };

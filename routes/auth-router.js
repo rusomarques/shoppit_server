@@ -8,7 +8,13 @@ router
   .get(
     '/auth/facebook',
     passport.authenticate('facebook', {
-      scope: ['public_profile', 'user_gender', 'user_birthday', 'email']
+      scope: [
+        'public_profile',
+        'user_gender',
+        'user_birthday',
+        'email',
+        'user_friends'
+      ]
     })
   )
 

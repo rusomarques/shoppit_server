@@ -13,7 +13,8 @@ module.exports = {
       'gender',
       'birthday',
       'email',
-      'picture'
+      'picture',
+      'friends'
     ]
   }
 };
