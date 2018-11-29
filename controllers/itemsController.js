@@ -6,8 +6,8 @@ itemsController.getRecommended = async (req, res) => {
   try {
     // user id may not be in req.body
     const { user_id } = req.headers;
-    const result = await Item.getRecommended(user_id);
-    res.send(result).sendStatus(200);
+    const items = await Item.getRecommended(user_id);
+    res.send(items).sendStatus(200);
   } catch (e) {
     console.log(e); // eslint-disable-line no-console
     res.sendStatus(400);
