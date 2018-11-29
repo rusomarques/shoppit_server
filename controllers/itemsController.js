@@ -7,7 +7,7 @@ itemsController.getRecommended = async (req, res) => {
     // user id may not be in req.body
     const { user_id } = req.headers;
     const items = await Item.getRecommended(user_id);
-    res.send(items).sendStatus(200);
+    res.status(200).send(items);
   } catch (e) {
     console.log(e); // eslint-disable-line no-console
     res.sendStatus(400);
@@ -24,7 +24,7 @@ itemsController.setAffinity = async (req, res) => {
     else if (affinity === 'false') affinity = false;
     else throw new Error('affinity must be true or false');
     const seenItem = await Item.setAffinity(user_id, item_id, affinity);
-    res.send(seenItem).sendStatus(201);
+    res.status(201).send(seenItem);
   } catch (e) {
     console.log(e); // eslint-disable-line no-console
     res.sendStatus(400);
