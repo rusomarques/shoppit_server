@@ -24,16 +24,36 @@ itemModel.getRecommended = async user_id => {
   // filter the array of items to remove duplicates (because an item can be in multiple categories)
   const filtered = _.uniqBy(flatten, 'item_id');
 
-  const itemFeed = [];
+  const noAffinity = [];
 
   // remove any items that the user has seen (set an affinity for it) before
   await Promise.all(
     filtered.map(async item => {
       const product = await item.getUser({ where: { user_id } });
-      if (!product.length) itemFeed.push(item);
+      if (!product.length) noAffinity.push(item);
     })
   );
 
+  const itemFeed = [];
+
+  await Promise.all(
+    noAffinity.map(async item => {
+      item.dataValues.categories = [];
+      let cat = await item.getCategory({
+        attributes: {
+          exclude: ['createdAt', 'updatedAt']
+        }
+      });
+      cat = cat.map(c => {
+        delete c.dataValues.ItemCategory;
+        return c;
+      });
+      // console.log('🐈', JSON.stringify(cat));
+      delete item.dataValues.ItemCategory;
+      item.dataValues.categories.push(...cat);
+      itemFeed.push(item);
+    })
+  );
   return _.shuffle(itemFeed);
 };
 
@@ -84,18 +104,3 @@ module.exports = itemModel;
 //   // u.first_name as "user.first_name"
 //   console.log(JSON.stringify(recommended));
 // };
-
-// const itemCategories = [];
-
-// // get an array of arrays of all the categories that correspond to each item
-// await Promise.all(
-//   noAffinity.map(async item => {
-//     const cat = await item.getCategory();
-//     itemCategories.push(cat);
-//   })
-// );
-
-// console.log('🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌', JSON.stringify(itemCategories));
-
-// // shuffle the resulting array of items, and return
-// // console.log('🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅', JSON.stringify(itemFeed));
