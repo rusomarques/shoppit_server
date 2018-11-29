@@ -48,7 +48,7 @@ itemModel.getRecommended = async user_id => {
         delete c.dataValues.ItemCategory;
         return c;
       });
-      // console.log('🐈', JSON.stringify(cat));
+
       delete item.dataValues.ItemCategory;
       item.dataValues.categories.push(...cat);
       itemFeed.push(item);
@@ -80,8 +80,6 @@ itemModel.setAffinity = async (user_id, item_id, affinity) => {
     });
   }
 };
-
-itemModel.getRecommended('2');
 
 module.exports = itemModel;
 

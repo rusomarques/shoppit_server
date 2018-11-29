@@ -35,17 +35,16 @@ userModel.addCategory = async (user_id, category_id) => {
       category_id
     }
   });
-  console.log('created!!', JSON.stringify(created));
+  return created;
 };
 
 userModel.removeCategory = async (user_id, category_id) => {
-  const lala = await db.UserCategory.destroy({
+  await db.UserCategory.destroy({
     where: {
       user_id,
       category_id
     }
   });
-  console.log('deleted!', JSON.stringify(lala));
 };
 
 userModel.getLikedItems = async user_id => {

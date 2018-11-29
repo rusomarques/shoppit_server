@@ -6,7 +6,6 @@ categoryModel.getAll = async () => {
   const categories = await db.Category.findAll({
     raw: true
   });
-  // console.log('all cats 🐈', categories);
   return categories;
 };
 
@@ -22,8 +21,5 @@ categoryModel.getAllItems = async category_id => {
   });
   return items;
 };
-
-// categoryModel.getAll();
-categoryModel.getAllItems(1);
 
 module.exports = categoryModel;

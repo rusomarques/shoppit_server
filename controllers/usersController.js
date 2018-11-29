@@ -29,8 +29,8 @@ usersController.addCategory = async (req, res) => {
   try {
     const { user_id } = req.headers;
     const category_id = req.params.category_id;
-    await User.addCategory(user_id, category_id);
-    res.sendStatus(201);
+    const category = await User.addCategory(user_id, category_id);
+    res.send(category).sendStatus(201);
   } catch (e) {
     console.log(e);
     res.sendStatus(400);
