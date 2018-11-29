@@ -51,7 +51,7 @@ usersController.removeCategory = async (req, res) => {
 
 usersController.getLikedItems = async (req, res) => {
   try {
-    const user_id = parseInt(req.params.user_id);
+    const user_id = req.params.user_id;
     const items = await User.getLikedItems(user_id);
     res.send(items).sendStatus(200);
   } catch (e) {

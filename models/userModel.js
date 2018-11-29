@@ -53,7 +53,13 @@ userModel.getLikedItems = async user_id => {
     where: { user_id }
   });
   const allItems = await user.getItem();
-  const likedItems = allItems.filter(item => item.UserItem.affinity === true);
+  const likedItems = allItems
+    .filter(item => item.UserItem.affinity === true)
+    .map(item => {
+      delete item.dataValues.UserItem;
+      item.dataValues.affinity = true;
+      return item;
+    });
 
   return likedItems;
 };
