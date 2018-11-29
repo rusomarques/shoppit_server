@@ -24,20 +24,20 @@ itemModel.getRecommended = async user_id => {
   // filter the array of items to remove duplicates (because an item can be in multiple categories)
   const filtered = _.uniqBy(flatten, 'item_id');
 
-  const noAffinity = [];
+  const unseenItems = [];
 
   // remove any items that the user has seen (set an affinity for it) before
   await Promise.all(
     filtered.map(async item => {
       const product = await item.getUser({ where: { user_id } });
-      if (!product.length) noAffinity.push(item);
+      if (!product.length) unseenItems.push(item);
     })
   );
 
   const itemFeed = [];
 
   await Promise.all(
-    noAffinity.map(async item => {
+    unseenItems.map(async item => {
       item.dataValues.categories = [];
       let cat = await item.getCategory({
         attributes: {
