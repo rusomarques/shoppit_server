@@ -9,6 +9,15 @@ const {
 const FacebookStrategy = require('passport-facebook').Strategy;
 const passport = require('passport');
 
+passport.serializeUser((user, done) => {
+  done(null, user.user_id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  const user = await db.User.findOne({ user_id: id });
+  done(null, user);
+});
+
 passport.use(
   new FacebookStrategy(
     {
@@ -57,10 +66,6 @@ passport.use(
     }
   )
 );
-
-// passport.serializeUser here
-
-// passport.deserializeUser here
 
 module.exports = passport;
 

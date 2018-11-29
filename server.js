@@ -6,12 +6,20 @@ const bodyParser = express.json();
 const passport = require('passport');
 const authRouter = require('./routes/auth-router');
 const wisherRouter = require('./routes/wisher-router');
+const cookieSession = require('cookie-session');
+const key = require('./config');
 // add error handlers
 
 const app = express();
 
 app
   .use(express.static('./public'))
+  .use(
+    cookieSession({
+      maxAge: 24 * 60 * 60 * 1000,
+      keys: key.session.keys
+    })
+  )
   .use(cors())
   // .use(session({ secret: process.env.EXPRESS_SECRET }))
   .use(bodyParser)
