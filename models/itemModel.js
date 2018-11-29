@@ -4,47 +4,7 @@ const _ = require('lodash');
 
 const itemModel = {};
 
-// u.first_name as "user.first_name"
-
 itemModel.getRecommended = async user_id => {
-  const recommended = await db.sequelize.query(
-    `SELECT i.item_id, i.item_name, i.img_url, i.amazon_url, i.price, ic.category_id
-      FROM "Items" i
-      INNER JOIN "ItemCategories" ic ON ic.item_id = i.item_id
-      INNER JOIN "Categories" c ON ic.category_id = c.category_id
-      INNER JOIN "UserCategories" uc ON uc.category_id = c.category_id
-      INNER JOIN "Users" u ON u.user_id = uc.user_id AND u.user_id = :user_id
-      LEFT JOIN "UserItems" ui ON ui.user_id = u.user_id AND ui.item_id = i.item_id
-      WHERE ui.user_id IS NULL`,
-    {
-      nest: true,
-      replacements: { user_id }
-    }
-  );
-  console.log('===================');
-
-  console.log(JSON.stringify(recommended));
-
-  // SELECT i.item_id, i.item_name, c.category_name, u.first_name, u.last_name
-  // FROM "Items" i
-  // INNER JOIN "ItemCategories" ic ON ic.item_id = i.item_id
-  // INNER JOIN "Categories" c ON ic.category_id = c.category_id
-  // INNER JOIN "UserCategories" uc ON uc.category_id = c.category_id
-  // INNER JOIN "Users" u ON u.user_id = uc.user_id AND u.user_id = '2';
-
-  // const sql = `
-  //   SELECT i.item_id, i.item_name, c.category_name, u.first_name, u.last_name
-  //   FROM "Users" u
-  //   LEFT JOIN "UserCategories" uc ON uc.user_id = u.user_id
-  //   LEFT JOIN "Categories" c ON uc.category_id = c.category_id
-  //   LEFT JOIN "ItemCategories" ic ON ic.category_id = c.category_id
-  //   RIGHT JOIN "Items" i ON i.item_id = ic.item_id
-  //   WHERE u.user_id = '2';
-  // `;
-};
-itemModel.getRecommended('2');
-
-itemModel._getRecommended = async user_id => {
   const user = await db.User.findOne({
     where: { user_id }
   });
@@ -74,7 +34,6 @@ itemModel._getRecommended = async user_id => {
     })
   );
 
-  // shuffle the resulting array of items, and return
   return _.shuffle(itemFeed);
 };
 
@@ -102,4 +61,41 @@ itemModel.setAffinity = async (user_id, item_id, affinity) => {
   }
 };
 
+itemModel.getRecommended('2');
+
 module.exports = itemModel;
+
+// itemModel.getRecommended = async user_id => {
+//   const recommended = await db.sequelize.query(
+//     `SELECT i.item_id, i.item_name, i.img_url, i.amazon_url, i.price
+//     FROM "Items" i
+//     INNER JOIN "ItemCategories" ic ON ic.item_id = i.item_id
+//     INNER JOIN "Categories" c ON ic.category_id = c.category_id
+//     INNER JOIN "UserCategories" uc ON uc.category_id = c.category_id
+//     INNER JOIN "Users" u ON u.user_id = uc.user_id AND u.user_id = :user_id
+//     LEFT JOIN "UserItems" ui ON ui.user_id = u.user_id AND ui.item_id = i.item_id
+//     WHERE ui.user_id IS NULL`,
+//     {
+//       nest: true,
+//       replacements: { user_id }
+//     }
+//   );
+
+//   // u.first_name as "user.first_name"
+//   console.log(JSON.stringify(recommended));
+// };
+
+// const itemCategories = [];
+
+// // get an array of arrays of all the categories that correspond to each item
+// await Promise.all(
+//   noAffinity.map(async item => {
+//     const cat = await item.getCategory();
+//     itemCategories.push(cat);
+//   })
+// );
+
+// console.log('🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌🙌', JSON.stringify(itemCategories));
+
+// // shuffle the resulting array of items, and return
+// // console.log('🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅🍅', JSON.stringify(itemFeed));
