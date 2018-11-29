@@ -1,13 +1,15 @@
 'use strict';
+// we should rename these fields to conform with the data that facebook auth gives us
+// check authentication/config.js
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
     {
       user_id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
       },
       first_name: {
         type: DataTypes.STRING,
@@ -21,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       birthday: DataTypes.DATE,
       avatar_url: DataTypes.STRING,
       email: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      accessToken: {
         type: DataTypes.STRING,
         allowNull: false
       }

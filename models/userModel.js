@@ -1,12 +1,6 @@
 /* eslint-disable no-console */
-
 const userModel = {};
 const db = require('./../schemas');
-
-userModel.createUser = async userInfo => {
-  await db.User.create({ ...userInfo });
-  // console.log('🙋‍♀️ new user!!', createdUser);
-};
 
 userModel.getOwnInfo = async user_id => {
   const userInfo = await db.User.findOne({
@@ -63,17 +57,5 @@ userModel.getLikedItems = async user_id => {
 
   return likedItems;
 };
-
-// const newUser = {
-//   user_id: 6,
-//   first_name: 'Pineapple',
-//   last_name: 'Pine',
-//   gender: 'other',
-//   birthday: new Date(),
-//   avatar_url: 'https://cool.com/iamapine.jpg',
-//   email: 'appleapple@fruit.com'
-// };
-
-// userModel.createUser(newUser);
 
 module.exports = userModel;

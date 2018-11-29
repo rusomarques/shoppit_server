@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_1_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         references: {
           model: 'Users',
@@ -17,7 +17,7 @@ module.exports = {
         }
       },
       user_2_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         references: {
           model: 'Users',

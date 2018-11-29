@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const usersController = require('./../controllers/usersController');
-const categoriesController = require('./../controllers/categoriesController');
-const itemsController = require('./../controllers/itemsController');
-// to authenticate user identity
-// const authMiddleware = require('./../middlewares/authMiddleware');
+const usersController = require('../controllers/usersController');
+const categoriesController = require('../controllers/categoriesController');
+const itemsController = require('../controllers/itemsController');
 
 // (User) me controllers
 router
@@ -18,9 +16,7 @@ router
 // .delete('/me/friends', user.deleteFriend)
 
 // User controllers
-router
-  .post('/register', usersController.createUser)
-  .get('/users/:user_id/items', usersController.getLikedItems);
+router.get('/users/:user_id/items', usersController.getLikedItems);
 
 // Item controllers
 router
