@@ -18,7 +18,6 @@ passport.use(
       profileFields
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log('📓📓📓📓📓📓 profile here', profile._json);
       let {
         id,
         first_name,
@@ -32,22 +31,29 @@ passport.use(
       if (birthday) {
         birthday = new Date(birthday);
       }
-      const newUser = await db.User.build({
-        user_id: id,
-        first_name,
-        last_name,
-        gender,
-        birthday,
-        avatar_url: picture.data.url,
-        email,
-        accessToken
-        // fb_friends: friends.data[0]
+      const currentUser = await db.User.findOne({
+        where: { user_id: id }
       });
-      const createdUser = await newUser.save();
-      console.log('🎄 created!', createdUser);
+      // fb_friends: friends.data[0]
+      if (currentUser) {
+        // user already exists
+        done(null, currentUser);
+      } else {
+        // create new user
+        const newUser = await db.User.create({
+          user_id: id,
+          first_name,
+          last_name,
+          gender,
+          birthday,
+          avatar_url: picture.data.url,
+          email,
+          accessToken
+        });
+        console.log('🎄 created!', newUser);
+        return done(null, newUser);
+      }
       // handle errors
-
-      return done(null, profile);
     }
   )
 );
