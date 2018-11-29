@@ -6,7 +6,6 @@ categoryModel.getAll = async () => {
   const categories = await db.Category.findAll({
     raw: true
   });
-  // console.log('all cats 🐈', categories);
   return categories;
 };
 
@@ -16,10 +15,34 @@ categoryModel.getAllItems = async category_id => {
   });
 
   const categoryItems = await category.getItem();
-  return categoryItems;
-};
+  const allInCat = categoryItems.map(item => {
+    delete item.dataValues.ItemCategory;
+    return item;
+  });
 
-// categoryModel.getAll();
-categoryModel.getAllItems(1);
+  const items = [];
+
+  await Promise.all(
+    allInCat.map(async item => {
+      item.dataValues.categories = [];
+      let cat = await item.getCategory({
+        attributes: {
+          exclude: ['createdAt', 'updatedAt']
+        }
+      });
+      cat = cat.map(c => {
+        delete c.dataValues.ItemCategory;
+        return c;
+      });
+
+      delete item.dataValues.ItemCategory;
+      item.dataValues.categories.push(...cat);
+      items.push(item);
+    })
+  );
+
+  // may have to filter out seen items for authenticated user
+  return items;
+};
 
 module.exports = categoryModel;

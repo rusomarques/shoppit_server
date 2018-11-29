@@ -29,8 +29,8 @@ usersController.addCategory = async (req, res) => {
   try {
     const { user_id } = req.headers;
     const category_id = req.params.category_id;
-    await User.addCategory(user_id, category_id);
-    res.sendStatus(201);
+    const category = await User.addCategory(user_id, category_id);
+    res.send(category).sendStatus(201);
   } catch (e) {
     console.log(e);
     res.sendStatus(400);
@@ -51,7 +51,7 @@ usersController.removeCategory = async (req, res) => {
 
 usersController.getLikedItems = async (req, res) => {
   try {
-    const user_id = parseInt(req.params.user_id);
+    const user_id = req.params.user_id;
     const items = await User.getLikedItems(user_id);
     res.send(items).sendStatus(200);
   } catch (e) {

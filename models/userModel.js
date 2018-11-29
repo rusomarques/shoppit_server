@@ -35,17 +35,16 @@ userModel.addCategory = async (user_id, category_id) => {
       category_id
     }
   });
-  console.log('created!!', JSON.stringify(created));
+  return created;
 };
 
 userModel.removeCategory = async (user_id, category_id) => {
-  const lala = await db.UserCategory.destroy({
+  await db.UserCategory.destroy({
     where: {
       user_id,
       category_id
     }
   });
-  console.log('deleted!', JSON.stringify(lala));
 };
 
 userModel.getLikedItems = async user_id => {
@@ -53,7 +52,34 @@ userModel.getLikedItems = async user_id => {
     where: { user_id }
   });
   const allItems = await user.getItem();
-  const likedItems = allItems.filter(item => item.UserItem.affinity === true);
+  const filtered = allItems
+    .filter(item => item.UserItem.affinity === true)
+    .map(item => {
+      delete item.dataValues.UserItem;
+      item.dataValues.affinity = true;
+      return item;
+    });
+
+  const likedItems = [];
+
+  await Promise.all(
+    filtered.map(async item => {
+      item.dataValues.categories = [];
+      let cat = await item.getCategory({
+        attributes: {
+          exclude: ['createdAt', 'updatedAt']
+        }
+      });
+      cat = cat.map(c => {
+        delete c.dataValues.ItemCategory;
+        return c;
+      });
+
+      delete item.dataValues.ItemCategory;
+      item.dataValues.categories.push(...cat);
+      likedItems.push(item);
+    })
+  );
 
   return likedItems;
 };
