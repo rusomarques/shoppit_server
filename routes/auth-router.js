@@ -1,7 +1,7 @@
 /* eslint-disable-next-line no-console */
 const express = require('express');
 const router = express.Router();
-const passport = require('./../fbStrategy');
+const passport = require('./../authentication/fbStrategy');
 
 router
   // auth with facebook

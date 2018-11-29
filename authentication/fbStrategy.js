@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const db = require('./schemas');
+const db = require('./../schemas');
 const {
   clientID,
   clientSecret,

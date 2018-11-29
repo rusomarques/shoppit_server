@@ -7,7 +7,7 @@ const passport = require('passport');
 const authRouter = require('./routes/auth-router');
 const wisherRouter = require('./routes/wisher-router');
 // const cookieSession = require('cookie-session');
-const { secret, maxAge } = require('./config').session;
+const { secret, maxAge } = require('./authentication/config').session;
 // add error handlers
 
 const app = express();
