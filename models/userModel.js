@@ -52,13 +52,34 @@ userModel.getLikedItems = async user_id => {
     where: { user_id }
   });
   const allItems = await user.getItem();
-  const likedItems = allItems
+  const filtered = allItems
     .filter(item => item.UserItem.affinity === true)
     .map(item => {
       delete item.dataValues.UserItem;
       item.dataValues.affinity = true;
       return item;
     });
+
+  const likedItems = [];
+
+  await Promise.all(
+    filtered.map(async item => {
+      item.dataValues.categories = [];
+      let cat = await item.getCategory({
+        attributes: {
+          exclude: ['createdAt', 'updatedAt']
+        }
+      });
+      cat = cat.map(c => {
+        delete c.dataValues.ItemCategory;
+        return c;
+      });
+
+      delete item.dataValues.ItemCategory;
+      item.dataValues.categories.push(...cat);
+      likedItems.push(item);
+    })
+  );
 
   return likedItems;
 };
