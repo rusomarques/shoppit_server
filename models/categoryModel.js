@@ -16,7 +16,11 @@ categoryModel.getAllItems = async category_id => {
   });
 
   const categoryItems = await category.getItem();
-  return categoryItems;
+  const items = categoryItems.map(item => {
+    delete item.dataValues.ItemCategory;
+    return item;
+  });
+  return items;
 };
 
 // categoryModel.getAll();
