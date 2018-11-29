@@ -2,26 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = express.json();
-// const session = require('express-session');
+const session = require('express-session');
 const passport = require('passport');
 const authRouter = require('./routes/auth-router');
 const wisherRouter = require('./routes/wisher-router');
-const cookieSession = require('cookie-session');
-const key = require('./config');
+// const cookieSession = require('cookie-session');
+const { secret, maxAge } = require('./config').session;
 // add error handlers
 
 const app = express();
 
 app
   .use(express.static('./public'))
-  .use(
-    cookieSession({
-      maxAge: 24 * 60 * 60 * 1000,
-      keys: key.session.keys
-    })
-  )
   .use(cors())
-  // .use(session({ secret: process.env.EXPRESS_SECRET }))
+  .use(session({ secret, maxAge }))
   .use(bodyParser)
   .use(passport.initialize())
   .use(passport.session())
