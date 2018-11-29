@@ -73,11 +73,13 @@ itemModel.setAffinity = async (user_id, item_id, affinity) => {
       }
     );
   } else {
-    await db.UserItem.create({
+    const seenItem = await db.UserItem.create({
       user_id,
       item_id,
       affinity
     });
+    console.log('-----------', seenItem);
+    return seenItem;
   }
 };
 
