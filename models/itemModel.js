@@ -78,7 +78,6 @@ itemModel.setAffinity = async (user_id, item_id, affinity) => {
       item_id,
       affinity
     });
-    console.log('-----------', seenItem);
     return seenItem;
   }
 };
