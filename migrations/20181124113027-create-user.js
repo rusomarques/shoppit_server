@@ -28,7 +28,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      accessToken: {
+      accesstoken: {
         type: Sequelize.STRING,
         allowNull: false
       },
