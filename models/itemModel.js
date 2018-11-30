@@ -4,9 +4,9 @@ const _ = require('lodash');
 
 const itemModel = {};
 
-itemModel.getRecommended = async user_id => {
+itemModel.getRecommended = async accesstoken => {
   const user = await db.User.findOne({
-    where: { user_id }
+    where: { accesstoken }
   });
   // get all the categories a user likes
   const categories = await user.getCategory();
@@ -29,7 +29,7 @@ itemModel.getRecommended = async user_id => {
   // remove any items that the user has seen (set an affinity for it) before
   await Promise.all(
     filtered.map(async item => {
-      const product = await item.getUser({ where: { user_id } });
+      const product = await item.getUser({ where: { accesstoken } });
       if (!product.length) unseenItems.push(item);
     })
   );
@@ -57,24 +57,25 @@ itemModel.getRecommended = async user_id => {
   return _.shuffle(itemFeed);
 };
 
-itemModel.setAffinity = async (user_id, item_id, affinity) => {
+itemModel.setAffinity = async (accesstoken, item_id, affinity) => {
   const user = await db.User.findOne({
-    where: { user_id }
+    where: { accesstoken }
   });
   const item = await user.getItem({ where: { item_id } });
   if (item.length) {
-    await db.UserItem.update(
+    const updatedItem = await db.UserItem.update(
       { affinity },
       {
         where: {
-          user_id,
+          user_id: user.user_id,
           item_id
         }
       }
     );
+    return updatedItem;
   } else {
     const seenItem = await db.UserItem.create({
-      user_id,
+      user_id: user.user_id,
       item_id,
       affinity
     });
