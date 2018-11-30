@@ -2,9 +2,9 @@
 const userModel = {};
 const db = require('./../schemas');
 
-userModel.getOwnInfo = async user_id => {
+userModel.getOwnInfo = async accesstoken => {
   const userInfo = await db.User.findOne({
-    where: { user_id },
+    where: { accesstoken },
     include: [
       {
         model: db.Category,
@@ -18,9 +18,9 @@ userModel.getOwnInfo = async user_id => {
   return userInfo.get({ plain: true });
 };
 
-userModel.getFriends = async user_id => {
+userModel.getFriends = async accesstoken => {
   const me = await db.User.findOne({
-    where: { user_id }
+    where: { accesstoken }
   });
 
   const user1Friends = await me.getUser_1();
@@ -28,28 +28,28 @@ userModel.getFriends = async user_id => {
   return user1Friends.concat(user2Friends);
 };
 
-userModel.addCategory = async (user_id, category_id) => {
+userModel.addCategory = async (accesstoken, category_id) => {
   const created = await db.UserCategory.findOrCreate({
     where: {
-      user_id,
+      accesstoken,
       category_id
     }
   });
   return created;
 };
 
-userModel.removeCategory = async (user_id, category_id) => {
+userModel.removeCategory = async (accesstoken, category_id) => {
   await db.UserCategory.destroy({
     where: {
-      user_id,
+      accesstoken,
       category_id
     }
   });
 };
 
-userModel.getLikedItems = async user_id => {
+userModel.getLikedItems = async accesstoken => {
   const user = await db.User.findOne({
-    where: { user_id }
+    where: { accesstoken }
   });
   const allItems = await user.getItem();
   const filtered = allItems
