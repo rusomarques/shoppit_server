@@ -15,7 +15,7 @@ userModel.getOwnInfo = async accesstoken => {
     ]
   });
 
-  return userInfo.get({ plain: true });
+  return userInfo;
 };
 
 userModel.getFollowing = async accesstoken => {
