@@ -63,18 +63,19 @@ itemModel.setAffinity = async (accesstoken, item_id, affinity) => {
   });
   const item = await user.getItem({ where: { item_id } });
   if (item.length) {
-    await db.UserItem.update(
+    const updatedItem = await db.UserItem.update(
       { affinity },
       {
         where: {
-          accesstoken,
+          user_id: user.user_id,
           item_id
         }
       }
     );
+    return updatedItem;
   } else {
     const seenItem = await db.UserItem.create({
-      accesstoken,
+      user_id: user.user_id,
       item_id,
       affinity
     });

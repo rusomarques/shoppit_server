@@ -29,9 +29,12 @@ userModel.getFollowing = async accesstoken => {
 };
 
 userModel.addCategory = async (accesstoken, category_id) => {
+  const user = await db.User.findOne({
+    where: { accesstoken }
+  });
   const created = await db.UserCategory.findOrCreate({
     where: {
-      accesstoken,
+      user_id: user.user_id,
       category_id
     }
   });
@@ -39,17 +42,20 @@ userModel.addCategory = async (accesstoken, category_id) => {
 };
 
 userModel.removeCategory = async (accesstoken, category_id) => {
+  const user = await db.User.findOne({
+    where: { accesstoken }
+  });
   await db.UserCategory.destroy({
     where: {
-      accesstoken,
+      user_id: user.user_id,
       category_id
     }
   });
 };
 
-userModel.getLikedItems = async accesstoken => {
+userModel.getLikedItems = async user_id => {
   const user = await db.User.findOne({
-    where: { accesstoken }
+    where: { user_id }
   });
   const allItems = await user.getItem();
   const filtered = allItems
