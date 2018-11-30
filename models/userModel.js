@@ -18,7 +18,7 @@ userModel.getOwnInfo = async accesstoken => {
   return userInfo.get({ plain: true });
 };
 
-userModel.getFriends = async accesstoken => {
+userModel.getFollowing = async accesstoken => {
   const me = await db.User.findOne({
     where: { accesstoken }
   });

@@ -6,17 +6,13 @@ const itemsController = require('../controllers/itemsController');
 
 // (User) me controllers
 router
-  // get user info including liked categories
   .get('/me', usersController.getOwnInfo)
-  // include friends' liked categories?
-  .get('/me/friends', usersController.getFriends)
+  .get('/me/friends', usersController.getFollowing)
   .put('/me/categories/:category_id', usersController.addCategory)
-  .delete('/me/categories/:category_id', usersController.removeCategory);
-// .post('/me/friends', user.addFriend)
-// .delete('/me/friends', user.deleteFriend)
-
-// User controllers
-router.get('/users/:user_id/items', usersController.getLikedItems);
+  .delete('/me/categories/:category_id', usersController.removeCategory)
+  // .put('/me/follow/:user_id', user.followFriend)
+  // .delete('/me/follow/:user_id', user.unfollowFriend)
+  .get('/users/:user_id/items', usersController.getLikedItems);
 
 // Item controllers
 router

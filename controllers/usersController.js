@@ -14,10 +14,10 @@ usersController.getOwnInfo = async (req, res) => {
   }
 };
 
-usersController.getFriends = async (req, res) => {
+usersController.getFollowing = async (req, res) => {
   try {
     const { user_id } = req.headers;
-    const friends = await User.getFriends(user_id);
+    const friends = await User.getFollowing(user_id);
     res.status(200).send(friends);
   } catch (e) {
     console.log(e);
