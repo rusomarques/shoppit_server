@@ -3,26 +3,30 @@ const router = express.Router();
 const usersController = require('../controllers/usersController');
 const categoriesController = require('../controllers/categoriesController');
 const itemsController = require('../controllers/itemsController');
+const authCheck = require('../middleware/authCheck');
 
-// (User) me controllers
+// User controllers
 router
-  .get('/me', usersController.getOwnInfo)
-  .get('/me/friends', usersController.getFollowing)
-  .put('/me/categories/:category_id', usersController.addCategory)
-  .delete('/me/categories/:category_id', usersController.removeCategory)
+  .get('/me', authCheck, usersController.getOwnInfo)
+  .get('/me/friends', authCheck, usersController.getFollowing)
+  .put('/me/categories/:category_id', authCheck, usersController.addCategory)
+  .delete('/me/categories/:category_id', authCheck, usersController.removeCategory)
   // .put('/me/follow/:user_id', user.followFriend)
   // .delete('/me/follow/:user_id', user.unfollowFriend)
-  .get('/users/:user_id/items', usersController.getLikedItems);
+  .get('/users/:user_id/items', authCheck, usersController.getLikedItems);
 
 // Item controllers
 router
-  // get the array of recommended items for authenticated user
-  .get('/items/recommended', itemsController.getRecommended)
-  .put('/items/:item_id/like/:value', itemsController.setAffinity);
+  .get('/items/recommended', authCheck, itemsController.getRecommended)
+  .put('/items/:item_id/like/:value', authCheck, itemsController.setAffinity);
 
 // Category controllers
 router
-  .get('/categories', categoriesController.getAll)
-  .get('/categories/:category_id/items', categoriesController.getAllItems);
+  .get('/categories', authCheck, categoriesController.getAll)
+  .get(
+    '/categories/:category_id/items',
+    authCheck,
+    categoriesController.getAllItems
+  );
 
 module.exports = router;
