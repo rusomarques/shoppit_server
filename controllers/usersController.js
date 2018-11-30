@@ -3,10 +3,9 @@ const usersController = {};
 const User = require('./../models/userModel');
 
 usersController.getOwnInfo = async (req, res) => {
-  // authentication through headers?
   try {
-    const { user_id } = req.headers;
-    const info = await User.getOwnInfo(user_id);
+    const { accesstoken } = req.headers;
+    const info = await User.getOwnInfo(accesstoken);
     res.status(200).send(info);
   } catch (e) {
     console.log(e);
@@ -16,8 +15,8 @@ usersController.getOwnInfo = async (req, res) => {
 
 usersController.getFollowing = async (req, res) => {
   try {
-    const { user_id } = req.headers;
-    const friends = await User.getFollowing(user_id);
+    const { accesstoken } = req.headers;
+    const friends = await User.getFollowing(accesstoken);
     res.status(200).send(friends);
   } catch (e) {
     console.log(e);
@@ -27,9 +26,9 @@ usersController.getFollowing = async (req, res) => {
 
 usersController.addCategory = async (req, res) => {
   try {
-    const { user_id } = req.headers;
+    const { accesstoken } = req.headers;
     const category_id = req.params.category_id;
-    const category = await User.addCategory(user_id, category_id);
+    const category = await User.addCategory(accesstoken, category_id);
     res.status(201).send(category);
   } catch (e) {
     console.log(e);
@@ -39,9 +38,9 @@ usersController.addCategory = async (req, res) => {
 
 usersController.removeCategory = async (req, res) => {
   try {
-    const { user_id } = req.headers;
+    const { accesstoken } = req.headers;
     const category_id = req.params.category_id;
-    await User.removeCategory(user_id, category_id);
+    await User.removeCategory(accesstoken, category_id);
     res.sendStatus(204);
   } catch (e) {
     console.log(e);
