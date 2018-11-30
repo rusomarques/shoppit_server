@@ -3,9 +3,7 @@ const categoryModel = {};
 const db = require('./../schemas');
 
 categoryModel.getAll = async () => {
-  const categories = await db.Category.findAll({
-    raw: true
-  });
+  const categories = await db.Category.findAll();
   return categories;
 };
 
