@@ -1,3 +1,8 @@
-const scrapeController = require('./scrape-controller');
+const scrape = require('./get-all-items');
+const config = require('./config');
 
-scrapeController.seed();
+const buildRealData = async () => {
+  await scrape.getAllItems(config.categories, config.numOfItems, config.offset);
+};
+
+buildRealData();
