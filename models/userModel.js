@@ -1,7 +1,36 @@
 /* eslint-disable no-console */
 const userModel = {};
 const db = require('./../schemas');
-const fetchFacebook = require('./../fetchFacebook');
+const fetchFacebook = require('../fetchAuth').facebook;
+
+userModel.upsertUser = async (profile, accesstoken) => {
+  if (profile.birthday) {
+    var birthdayDate = new Date(profile.birthday);
+  }
+
+  await db.User.upsert({
+    user_id: profile.id,
+    first_name: profile.first_name,
+    last_name: profile.last_name,
+    gender: profile.gender,
+    birthday: birthdayDate,
+    avatar_url: profile.picture.data.url,
+    email: profile.email,
+    accesstoken
+  });
+
+  // set user's relation to category (this is hard coded, and not very category-agnostic)
+  const catName = profile.gender === 'female' ? 'For her' : 'For him';
+  const findCatID = async category_name => {
+    const catObj = await db.Category.findOne({ where: { category_name } });
+    return catObj.category_id;
+  };
+  // TODO: handle a third case? when gender is undefined or other, add both categories
+  const category_id = await findCatID(catName);
+  await userModel.addCategory(accesstoken, category_id);
+
+  return;
+};
 
 userModel.getOwnInfo = async accesstoken => {
   const userInfo = await db.User.findOne({
@@ -20,30 +49,23 @@ userModel.getOwnInfo = async accesstoken => {
 };
 
 userModel.getFriends = async accesstoken => {
-  const profile = fetchFacebook(accesstoken);
-  console.log('--------heeeeeey profile----------', profile);
+  const profile = await fetchFacebook(accesstoken);
+  const friendsIDs = profile.friends.data;
 
-  // const myFriends = [];
+  const userFriends = [];
 
-  // ids.map(async obj => {
-  //   const user = await db.User.findOne({
-  //     where: { user_id: obj[id] }
-  //   });
-  //   myFriends.push(user);
-  // });
+  await Promise.all(
+    friendsIDs.map(async obj => {
+      const friend = await db.User.findOne({
+        where: { user_id: obj.id },
+        attributes: { exclude: ['accesstoken'] }
+      });
+      userFriends.push(friend);
+    })
+  );
 
-  // return myFriends;
+  return userFriends;
 };
-
-// userModel._getFriends = async accesstoken => {
-//   const me = await db.User.findOne({
-//     where: { accesstoken }
-//   });
-
-//   const user1Friends = await me.getUser_1();
-//   const user2Friends = await me.getUser_2();
-//   return user1Friends.concat(user2Friends);
-// };
 
 userModel.addCategory = async (accesstoken, category_id) => {
   const user = await db.User.findOne({
@@ -106,5 +128,15 @@ userModel.getLikedItems = async user_id => {
 
   return likedItems;
 };
+
+// userModel._getFriends = async accesstoken => {
+//   const me = await db.User.findOne({
+//     where: { accesstoken }
+//   });
+
+//   const user1Friends = await me.getUser_1();
+//   const user2Friends = await me.getUser_2();
+//   return user1Friends.concat(user2Friends);
+// };
 
 module.exports = userModel;
