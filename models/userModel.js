@@ -3,6 +3,35 @@ const userModel = {};
 const db = require('./../schemas');
 const fetchFacebook = require('../fetchAuth').facebook;
 
+userModel.upsertUser = async (profile, accesstoken) => {
+  if (profile.birthday) {
+    var birthdayDate = new Date(profile.birthday);
+  }
+
+  await db.User.upsert({
+    user_id: profile.id,
+    first_name: profile.first_name,
+    last_name: profile.last_name,
+    gender: profile.gender,
+    birthday: birthdayDate,
+    avatar_url: profile.picture.data.url,
+    email: profile.email,
+    accesstoken
+  });
+
+  // set user's relation to category (this is hard coded, and not very category-agnostic)
+  const catName = profile.gender === 'female' ? 'For her' : 'For him';
+  const findCatID = async category_name => {
+    const catObj = await db.Category.findOne({ where: { category_name } });
+    return catObj.category_id;
+  };
+  // TODO: handle a third case? when gender is undefined or other, add both categories
+  const category_id = await findCatID(catName);
+  await userModel.addCategory(accesstoken, category_id);
+
+  return;
+};
+
 userModel.getOwnInfo = async accesstoken => {
   const userInfo = await db.User.findOne({
     where: { accesstoken },
