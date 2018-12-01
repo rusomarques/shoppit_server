@@ -1,10 +1,9 @@
-const fs = require('fs');
 const _ = require('lodash');
-const data = require('./data/data.json');
 
 const scrapeController = {};
 
-scrapeController.seed = async () => {
+// reads raw data and returns data to save in psql db (tables: Items, Categories, ItemsCategories)
+scrapeController.formatData = async data => {
   const db = {
     categories: [],
     itemCategories: []
@@ -31,23 +30,10 @@ scrapeController.seed = async () => {
     }
 
     db.items = _.uniqBy(tempItems, 'id');
+    return db;
   } catch (e) {
-    console.log(e); // eslint-disable-line no-console
+    console.log('not able to format data', e); // eslint-disable-line no-console
   }
-
-  fs.writeFile(
-    __dirname + '/data/seed-real-data.json',
-    JSON.stringify(db),
-    'utf8',
-    e => {
-      /* eslint-disable no-console */
-      if (e) console.log(`could not save to json`);
-      else
-        console.log(
-          `categories, items and itemCategories saved to seed-real-data.json`
-        );
-    }
-  );
 };
 
 const renameCategory = name => {
@@ -56,6 +42,7 @@ const renameCategory = name => {
   else if (name === 'for-mom') return 'For mom';
   else if (name === 'for-dad') return 'For dad';
   else if (name === 'for-kids') return 'For kids';
+  else if (name === 'for-the-pet') return 'Animal lover';
   else {
     const sanitize = name.replace(/for-the-/, '');
     name = sanitize.charAt(0).toUpperCase() + sanitize.slice(1);

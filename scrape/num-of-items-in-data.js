@@ -1,5 +1,6 @@
-const data = require('./data/data.json');
+const data = require('./data/seed-real-data.json');
 
-for (let category in data) {
-  console.log(`${category}: ${data[category].length} items`); // eslint-disable-line no-console
-}
+/* eslint-disable no-console */
+console.log(`${data.categories.length} categories`);
+console.log(`${data.itemCategories.length} itemCategories relation`);
+console.log(`${data.items.length} items`);
