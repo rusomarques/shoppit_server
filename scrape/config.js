@@ -15,5 +15,7 @@ module.exports = {
     'for-mom',
     'for-dad',
     'for-kids'
-  ]
+  ],
+  numOfItems: 24,
+  offset: 0
 };

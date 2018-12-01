@@ -39,15 +39,13 @@ scrapeController.formatData = async data => {
 const renameCategory = name => {
   if (name === 'for-her') return 'For her';
   else if (name === 'for-him') return 'For him';
-  else if (name === 'for-mom') return 'For mom';
-  else if (name === 'for-dad') return 'For dad';
-  else if (name === 'for-kids') return 'For kids';
-  else if (name === 'for-the-pet') return 'Animal lover';
+  else if (name === 'for-mom') return 'a mom';
+  else if (name === 'for-dad') return 'a dad';
+  else if (name === 'for-kids') return 'a kid at heart';
+  else if (name === 'for-the-pet') return 'an animal lover';
   else {
-    const sanitize = name.replace(/for-the-/, '');
-    name = sanitize.charAt(0).toUpperCase() + sanitize.slice(1);
+    return name.replace(/for-the-/, '');
   }
-  return name;
 };
 
 module.exports = scrapeController;

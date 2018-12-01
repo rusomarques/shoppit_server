@@ -1,8 +1,8 @@
 const scrape = require('./get-all-items');
-const categories = require('./config').categories;
+const config = require('./config');
 
 const buildRealData = async () => {
-  await scrape.getAllItems(categories, 24, 0);
+  await scrape.getAllItems(config.categories, config.numOfItems, config.offset);
 };
 
 buildRealData();
