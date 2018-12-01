@@ -8,9 +8,13 @@ const authCheck = require('../middleware/authCheck');
 // User controllers
 router
   .get('/me', authCheck, usersController.getOwnInfo)
-  .get('/me/friends', authCheck, usersController.getFollowing)
+  .get('/me/friends', authCheck, usersController.getFriends)
   .put('/me/categories/:category_id', authCheck, usersController.addCategory)
-  .delete('/me/categories/:category_id', authCheck, usersController.removeCategory)
+  .delete(
+    '/me/categories/:category_id',
+    authCheck,
+    usersController.removeCategory
+  )
   // .put('/me/follow/:user_id', user.followFriend)
   // .delete('/me/follow/:user_id', user.unfollowFriend)
   .get('/users/:user_id/items', authCheck, usersController.getLikedItems);

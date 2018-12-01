@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const userModel = {};
 const db = require('./../schemas');
+const fetchFacebook = require('./../fetchFacebook');
 
 userModel.getOwnInfo = async accesstoken => {
   const userInfo = await db.User.findOne({
@@ -18,15 +19,31 @@ userModel.getOwnInfo = async accesstoken => {
   return userInfo;
 };
 
-userModel.getFollowing = async accesstoken => {
-  const me = await db.User.findOne({
-    where: { accesstoken }
-  });
+userModel.getFriends = async accesstoken => {
+  const profile = fetchFacebook(accesstoken);
+  console.log('--------heeeeeey profile----------', profile);
 
-  const user1Friends = await me.getUser_1();
-  const user2Friends = await me.getUser_2();
-  return user1Friends.concat(user2Friends);
+  // const myFriends = [];
+
+  // ids.map(async obj => {
+  //   const user = await db.User.findOne({
+  //     where: { user_id: obj[id] }
+  //   });
+  //   myFriends.push(user);
+  // });
+
+  // return myFriends;
 };
+
+// userModel._getFriends = async accesstoken => {
+//   const me = await db.User.findOne({
+//     where: { accesstoken }
+//   });
+
+//   const user1Friends = await me.getUser_1();
+//   const user2Friends = await me.getUser_2();
+//   return user1Friends.concat(user2Friends);
+// };
 
 userModel.addCategory = async (accesstoken, category_id) => {
   const user = await db.User.findOne({

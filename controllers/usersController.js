@@ -13,10 +13,10 @@ usersController.getOwnInfo = async (req, res) => {
   }
 };
 
-usersController.getFollowing = async (req, res) => {
+usersController.getFriends = async (req, res) => {
   try {
     const { accesstoken } = req.headers;
-    const friends = await User.getFollowing(accesstoken);
+    const friends = await User.getFriends(accesstoken);
     res.status(200).send(friends);
   } catch (e) {
     console.log(e);
