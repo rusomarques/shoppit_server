@@ -5,7 +5,7 @@ const { upsertUser } = require('./../models/userModel');
 
 const authCheck = async (req, res, next) => {
   try {
-    const { accesstoken } = req.headers;
+    const { accesstoken, pushtoken } = req.headers;
     const currentUser = await db.User.findOne({
       where: { accesstoken }
     });
@@ -13,7 +13,7 @@ const authCheck = async (req, res, next) => {
       next();
     } else {
       const profile = await fetchFacebook(accesstoken);
-      await upsertUser(profile, accesstoken);
+      await upsertUser(profile, accesstoken, pushtoken);
       next();
     }
   } catch (e) {

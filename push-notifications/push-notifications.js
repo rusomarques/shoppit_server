@@ -1,11 +1,11 @@
 const rp = require('request-promise');
 
-const sendNotification = async (pushToken, receiver) => {
+const sendNotification = async (pushToken, giftReceiver) => {
   try {
     const body = {
       to: pushToken,
       title: 'Wishopper',
-      body: `Its ${receiver} birthday, why not get her something?`
+      body: `Its ${giftReceiver} birthday, why not get her something?`
     };
     const options = {
       method: 'POST',
