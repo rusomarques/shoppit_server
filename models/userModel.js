@@ -96,11 +96,14 @@ userModel.getLikedItems = async user_id => {
   const user = await db.User.findOne({
     where: { user_id }
   });
-  const allItems = await user.getItem();
+  const allItems = await user.getItem({
+    attributes: {
+      exclude: ['createdAt', 'updatedAt']
+    }
+  });
   const filtered = allItems
     .filter(item => item.UserItem.affinity === true)
     .map(item => {
-      delete item.dataValues.UserItem;
       item.dataValues.affinity = true;
       return item;
     });
@@ -126,7 +129,15 @@ userModel.getLikedItems = async user_id => {
     })
   );
 
-  return likedItems;
+  // we have to rearrange by order her because the Promise.all on line 113 rearranges the order again
+  const sorted = likedItems
+    .sort((a, b) => b.UserItem.updatedAt - a.UserItem.updatedAt)
+    .map(item => {
+      delete item.dataValues.UserItem;
+      return item;
+    });
+
+  return sorted;
 };
 
 // userModel._getFriends = async accesstoken => {
