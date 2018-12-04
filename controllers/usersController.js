@@ -24,6 +24,18 @@ usersController.getFriends = async (req, res) => {
   }
 };
 
+usersController.followFriend = async (req, res) => {
+  try {
+    const { accesstoken } = req.headers;
+    const friend_id = req.params.friend_id;
+    const addedFriend = await User.followFriend(accesstoken, friend_id);
+    res.status(201).send(addedFriend);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(400);
+  }
+};
+
 usersController.addCategory = async (req, res) => {
   try {
     const { accesstoken } = req.headers;

@@ -15,7 +15,7 @@ router
     authCheck,
     usersController.removeCategory
   )
-  // .put('/me/follow/:user_id', user.followFriend)
+  .put('/me/follow/:friend_id', authCheck, usersController.followFriend)
   // .delete('/me/follow/:user_id', user.unfollowFriend)
   .get('/users/:user_id/items', authCheck, usersController.getLikedItems);
 
