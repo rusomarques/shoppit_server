@@ -1,9 +1,10 @@
 const rp = require('request-promise');
 
-const sendNotification = async (pushToken, giftReceiver) => {
+const sendNotification = async (pushtoken, giftReceiver) => {
+  if (!pushtoken) return;
   try {
     const body = {
-      to: pushToken,
+      to: pushtoken,
       title: 'Wishopper',
       body: `Its ${giftReceiver} birthday, why not get her something?`
     };
@@ -27,3 +28,5 @@ const sendNotification = async (pushToken, giftReceiver) => {
 };
 
 module.exports = sendNotification;
+
+// https://medium.com/@alexkiefer_23564/easily-setup-push-notifications-with-expo-for-react-native-apps-be50668832e2
