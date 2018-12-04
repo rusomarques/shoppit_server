@@ -3,7 +3,7 @@ const userModel = {};
 const db = require('./../schemas');
 const fetchFacebook = require('../fetchAuth').facebook;
 
-userModel.upsertUser = async (profile, accesstoken) => {
+userModel.upsertUser = async (profile, accesstoken, pushtoken) => {
   if (profile.birthday) {
     var birthdayDate = new Date(profile.birthday);
   }
@@ -16,7 +16,8 @@ userModel.upsertUser = async (profile, accesstoken) => {
     birthday: birthdayDate,
     avatar_url: profile.picture.data.url,
     email: profile.email,
-    accesstoken
+    accesstoken,
+    pushtoken
   });
 
   // set user's relation to category (this is hard coded, and not very category-agnostic)

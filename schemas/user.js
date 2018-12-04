@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       accesstoken: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      pushtoken: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
     },
     {}

@@ -12,6 +12,7 @@ module.exports = {
       avatar_url: user.avatar_url,
       email: user.email,
       accesstoken: user.accesstoken,
+      pushtoken: user.pushtoken,
       createdAt: new Date(),
       updatedAt: new Date()
     }));
