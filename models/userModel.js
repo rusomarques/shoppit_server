@@ -102,10 +102,9 @@ userModel.unfollowFriend = async (accesstoken, friend_id) => {
   const user = await db.User.findOne({
     where: { accesstoken }
   });
-
   await db.Friend.destroy({
     where: {
-      user_id: user.user_id,
+      user_1_id: user.user_id,
       user_2_id: friend_id
     }
   });
