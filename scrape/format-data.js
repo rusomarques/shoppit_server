@@ -37,8 +37,8 @@ scrapeController.formatData = async data => {
 };
 
 const renameCategory = name => {
-  if (name === 'for-her') return 'for her';
-  else if (name === 'for-him') return 'for him';
+  if (name === 'for-her') return 'a woman';
+  else if (name === 'for-him') return 'a man';
   else if (name === 'for-mom') return 'a mom';
   else if (name === 'for-dad') return 'a dad';
   else if (name === 'for-kids') return 'a kid at heart';
