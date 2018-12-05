@@ -36,6 +36,18 @@ usersController.followFriend = async (req, res) => {
   }
 };
 
+usersController.unfollowFriend = async (req, res) => {
+  try {
+    const { accesstoken } = req.headers;
+    const friend_id = req.params.friend_id;
+    await User.unfollowFriend(accesstoken, friend_id);
+    res.sendStatus(204);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(400);
+  }
+};
+
 usersController.addCategory = async (req, res) => {
   try {
     const { accesstoken } = req.headers;
