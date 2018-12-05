@@ -16,7 +16,7 @@ router
     usersController.removeCategory
   )
   .put('/me/follow/:friend_id', authCheck, usersController.followFriend)
-  // .delete('/me/follow/:user_id', user.unfollowFriend)
+  .delete('/me/follow/:friend_id', authCheck, usersController.unfollowFriend)
   .get('/users/:user_id/items', authCheck, usersController.getLikedItems);
 
 // Item controllers
