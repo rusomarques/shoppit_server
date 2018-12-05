@@ -49,6 +49,10 @@ userModel.getOwnInfo = async accesstoken => {
   return userInfo;
 };
 
+/* 
+  getFriends returns user facebook friends (does not interact with
+  Friends table in db.
+*/
 userModel.getFriends = async accesstoken => {
   const profile = await fetchFacebook(accesstoken);
   const friendsIDs = profile.friends.data;
@@ -66,6 +70,32 @@ userModel.getFriends = async accesstoken => {
   );
 
   return userFriends;
+};
+
+/* 
+  setFriends -> creates and entry in Friends table (should be called)
+*/
+userModel.followFriend = async (accesstoken, friend_id) => {
+  const user = await db.User.findOne({
+    where: { accesstoken }
+  });
+  const following = await db.Friend.findOne({
+    where: {
+      user_1_id: user.user_id,
+      user_2_id: friend_id
+    }
+  });
+
+  if (following) {
+    return following;
+  } else {
+    const setFriend = await db.Friend.create({
+      user_1_id: user.user_id,
+      user_2_id: friend_id
+    });
+
+    return setFriend;
+  }
 };
 
 userModel.addCategory = async (accesstoken, category_id) => {
