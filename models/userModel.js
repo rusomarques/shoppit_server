@@ -21,7 +21,7 @@ userModel.upsertUser = async (profile, accesstoken, pushtoken) => {
   });
 
   // set user's relation to category (this is hard coded, and not very category-agnostic)
-  const catName = profile.gender === 'female' ? 'for her' : 'for him';
+  const catName = profile.gender === 'female' ? 'a woman' : 'a man';
   const findCatID = async category_name => {
     const catObj = await db.Category.findOne({ where: { category_name } });
     return catObj.category_id;
