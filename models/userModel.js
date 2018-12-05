@@ -98,6 +98,19 @@ userModel.followFriend = async (accesstoken, friend_id) => {
   }
 };
 
+userModel.unfollowFriend = async (accesstoken, friend_id) => {
+  const user = await db.User.findOne({
+    where: { accesstoken }
+  });
+
+  await db.Friend.destroy({
+    where: {
+      user_id: user.user_id,
+      user_2_id: friend_id
+    }
+  });
+};
+
 userModel.addCategory = async (accesstoken, category_id) => {
   const user = await db.User.findOne({
     where: { accesstoken }
@@ -170,15 +183,5 @@ userModel.getLikedItems = async user_id => {
 
   return sorted;
 };
-
-// userModel._getFriends = async accesstoken => {
-//   const me = await db.User.findOne({
-//     where: { accesstoken }
-//   });
-
-//   const user1Friends = await me.getUser_1();
-//   const user2Friends = await me.getUser_2();
-//   return user1Friends.concat(user2Friends);
-// };
 
 module.exports = userModel;
