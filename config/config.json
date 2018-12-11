@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": null,
-    "database": "wisher_development",
+    "database": "shoppit",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": null,
-    "database": "wisher_test",
+    "database": "shoppit_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": null,
-    "database": "wisher_production",
+    "database": "shoppit_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
