@@ -130,7 +130,7 @@ To run the application, go to the [Shoppit client](https://github.com/Luke-Roger
 - [PostgreSQL](https://www.postgresql.org/)
 - [Sequelize](http://docs.sequelizejs.com/)
 
-### Front-end: [wisher_frontend](https://github.com/Luke-Rogerson/wisher_frontend)
+### Front-end: [shoppit_client](https://github.com/Luke-Rogerson/shoppit_client)
 
 ## Developer team
 
