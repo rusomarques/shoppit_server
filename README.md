@@ -3,11 +3,11 @@
 > Express server to compute and store data in a PostgreSQL database, providing services to our Shoppit mobile app.
 
 <p align="center">
-  <img src="./assets/shoppit-banner.png" width="100%">
+**Tinder for cool sh*t.**
 </p>
 
 <p align="center">
-**Tinder for cool sh*t.**
+  <img src="./assets/shoppit-banner.png" width="100%">
 </p>
 
 Shoppit is a social shopping app.
@@ -17,6 +17,7 @@ Spend a few minutes discovering your personalized, curated products. Buy somethi
 ## Table of contents
 
 - [Screenshots](#screenshots)
+- [Motivation](#motivation)
 - [Getting started](#getting-started)
 - [Usage](#usage)
 - [Tech Stack](#tech-stack)
@@ -35,6 +36,12 @@ After connecting the app with Facebook, Shoppit will automatically detect a few 
 </p>
 
 Connect to your friends without the hassle! Your friends list is automatically generated from your Facebook connections. Make sure you never forget a birthday again by tapping the bell icon next to a friend's name to subscribe to notifications. Need to get a friend something special? Simply browse their recently liked items on their profile. Just check out an item on their profile to find out more info, and once you find a match, buy it from Amazon directly within the app!
+
+## Motivation
+
+We wanted to make an app that would make shopping on your phone social and fun.
+
+We have all forgotten a friend or family member's birthday in the past, so we wanted an easy way we could check and get notified of upcoming birthdays AND buy them something they actually wanted!
 
 ## Getting started
 
