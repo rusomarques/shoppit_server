@@ -11,7 +11,7 @@ scrapeController.formatData = async data => {
   const tempItems = [];
 
   try {
-    let i = 1;
+    let i = 0;
     for (let category in data) {
       db.categories.push({
         category_id: i,
