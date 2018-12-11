@@ -15,10 +15,8 @@ Shoppit is a social shopping app that recommends curated items and reminds you o
 - [Screenshots](#screenshots)
 - [Getting started](#getting-started)
 - [Usage](#usage)
-- [Postman collection](#postman-collection)
 - [Tech Stack](#tech-stack)
 - [Developers team](#developers-team)
-- [License](#license)
 
 ## Screenshots
 
@@ -111,27 +109,19 @@ cd shoppit_server
 npm start
 ```
 
-## Postman collection
-
-Use the [Trash Walk.postman_collection.json](https://github.com/cherlin/trash-walk-backend/blob/develop/Trash-Walk.postman_collection.json) to test all API endpoints.
-
 ## Tech Stack
 
 ### Back-end:
 
-- [Koa](https://koajs.com/)
-- [PostgreSQL](https://www.postgresql.org/) & [PostGIS](https://postgis.net/)
+- [Express](https://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
 - [Sequelize](http://docs.sequelizejs.com/)
 
-### Front-end: [trash-walk-frontend](https://github.com/cherlin/trash-walk-frontend)
+### Front-end: [wisher_frontend](https://github.com/Luke-Rogerson/wisher_frontend) 
 
 ## Developers team
 
-- Christofer Herlin - [GitHub](https://github.com/cherlin) - [LinkedIn](https://www.linkedin.com/in/cherl/)
-- Juliane Nagao - [GitHub](https://github.com/junagao) - [LinkedIn](https://www.linkedin.com/in/junagao/)
-- Necati Özmen - [GitHub](https://github.com/necatiozmen) - [LinkedIn](https://www.linkedin.com/in/necatiozmen/)
-- Marco Antonio Ghiani - [GitHub](https://github.com/marcoantonioghiani01) - [LinkedIn](https://www.linkedin.com/in/marcoantonioghiani/)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/cherlin/trash-walk-backend/blob/develop/LICENSE) file for details
+- Amy Kirasack - [GitHub](https://github.com/momentmuse) - [LinkedIn](https://www.linkedin.com/in/amy-kirasack-186793147/detail/treasury/position:1398015310/?entityUrn=urn%3Ali%3Afs_treasuryMedia%3A(ACoAACOIcjYBc-Q-f2D0PRV7PjtP8Hrow0yjcxk%2C1544295149276)&section=position%3A1398015310&treasuryCount=2) 
+- Charlie Rutland - [GitHub](https://github.com/charlierutland) - [LinkedIn](https://www.linkedin.com/in/charlie-rutland/)
+- Luke Rogerson - [GitHub](https://github.com/Luke-Rogerson) - [LinkedIn](https://www.linkedin.com/in/lukerogerson/)
+- Leandro Marques [GitHub](https://github.com/rusomarques) - [LinkedIn](https://www.linkedin.com/in/leandro-marques-pereira/)
