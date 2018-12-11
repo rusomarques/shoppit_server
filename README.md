@@ -12,7 +12,7 @@
 
 Shoppit is a social shopping app.
 
-Spend a few minutes browsing our personalized, curated products. Buy something nice for yourself or a friend--never forget a birthday again!
+Spend a few minutes discovering your personalized, curated products. Buy something nice for yourself or a friend--never forget a birthday again!
 
 ## Table of contents
 
@@ -28,13 +28,13 @@ Spend a few minutes browsing our personalized, curated products. Buy something n
   <img src="./assets/first.jpg" />
 </p>
 
-After connecting the app with Facebook, Shoppit will automatically detect a few categories you may like and auto-select them on account creation. You can also customize your recommendations freely by selecting the categories at your leisure. The items feed will dynamically update to reflect your preferences, where you can swipe through your curated items to save them in your profile.
+After connecting the app with Facebook, Shoppit will automatically detect a few categories you'll like and save them to your profile. If your recommendations feel a bit stale, you can customize your them at any time by tapping on whatever categories interest you. Tap on the home screen again to see your dynamically-updated item feed. Find something you like? Swipe right to save it on your profile!
 
 <p align="center">
   <img src="./assets/second.jpg" />
 </p>
 
-Your friends list is automatically populated from Facebook for people using the app. You can subscribe to notifications for their birthdays by tapping the bell icon, or tap their name to view your friend's liked items. On the profile page, you can view the most recent liked items. If you tap on an item, you'll be brought to the item details page. The BUY NOW button will redirect you to the product's Amazon page for purchase within the app.
+Connect to your friends list without the hassle! Your friends list is automatically generated from your Facebook connections. Make sure you never forget a birthday again by tapping the bell icon next to a friend's name to subscribe to notifications. Need to get a friend something special? Simply browse their recently liked items on their profile. Just tap an item on their profile to find out more info, and once you find a match, buy it from Amazon directly within the app!
 
 ## Getting started
 
