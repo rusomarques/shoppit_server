@@ -28,13 +28,13 @@ Spend a few minutes discovering your personalized, curated products. Buy somethi
   <img src="./assets/first.jpg" />
 </p>
 
-After connecting the app with Facebook, Shoppit will automatically detect a few categories you'll like and save them to your profile. If your recommendations feel a bit stale, you can customize your them at any time by tapping on whatever categories interest you. Tap on the home screen again to see your dynamically-updated item feed. Find something you like? Swipe right to save it on your profile!
+After connecting the app with Facebook, Shoppit will automatically detect a few categories you'll like and save them to your profile. If your recommendations feel a bit stale, you can customize your them at any time by saving whatever categories interest you. Tap on the home screen again to see your dynamically-updated item feed. Find something you like? Swipe right to save it on your profile!
 
 <p align="center">
   <img src="./assets/second.jpg" />
 </p>
 
-Connect to your friends list without the hassle! Your friends list is automatically generated from your Facebook connections. Make sure you never forget a birthday again by tapping the bell icon next to a friend's name to subscribe to notifications. Need to get a friend something special? Simply browse their recently liked items on their profile. Just tap an item on their profile to find out more info, and once you find a match, buy it from Amazon directly within the app!
+Connect to your friends without the hassle! Your friends list is automatically generated from your Facebook connections. Make sure you never forget a birthday again by tapping the bell icon next to a friend's name to subscribe to notifications. Need to get a friend something special? Simply browse their recently liked items on their profile. Just check out an item on their profile to find out more info, and once you find a match, buy it from Amazon directly within the app!
 
 ## Getting started
 
