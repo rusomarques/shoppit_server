@@ -2,14 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = express.json();
-const wisherRouter = require('./routes/wisher-router');
+const shoppitRouter = require('./routes/shoppit-router');
 
 const app = express();
 
 app
   .use(cors())
   .use(bodyParser)
-  .use(wisherRouter)
+  .use(shoppitRouter)
   .use((req, res) => {
     res.status(404).send(`${req.path} not found!`);
   });
