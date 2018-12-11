@@ -1,14 +1,16 @@
 # Shoppit - Server
 
-> Express server to compute and store data, providing services to Shoppit mobile app.
+> Express server to compute and store data in a PostgreSQL database, providing services to our Shoppit mobile app.
 
 <p align="center">
   <img src="./assets/logo.png" width="30%">
-</p> 
+</p>
 
+<p align="center">
+**Tinder for cool sh*t.**
+</p>
 
-
-Shoppit is a social shopping app that recommends curated items and reminds you of your friends' birthdays. 
+Shoppit is a social shopping app that recommends curated items and reminds you of your friends' birthdays.
 
 ## Table of contents
 
@@ -24,23 +26,27 @@ Shoppit is a social shopping app that recommends curated items and reminds you o
   <img src="./assets/first.jpg" />
 </p>
 
+After connecting the app with Facebook, Shoppit will automatically detect a few categories you may like and auto-select them on account creation. You can also customize your recommendations freely by selecting the categories at your leisure. The items feed will dynamically update to reflect your preferences, where you can swipe through your curated items to save them in your profile.
+
 <p align="center">
   <img src="./assets/second.jpg" />
 </p>
 
-
+Your friends list is automatically populated from Facebook for people using the app. You can subscribe to notifications for their birthdays by tapping the bell icon, or tap their name to view your friend's liked items. On the profile page, you can view the most recent liked items. If you tap on an item, you'll be brought to the item details page. The BUY NOW button will redirect you to the product's Amazon page for purchase within the app.
 
 ## Getting started
 
 A few things you have to take in consideration before using Shoppit - Server
 
-After cloning the repo you'll have to :
+You'll need to install the Shoppit server first, and then set up the [Shoppit client](https://github.com/Luke-Rogerson/shoppit_client) to view the app in an emulator. More on that below.
+
+After cloning the Shoppit - Server repo you'll have to :
 
 ### Install global and local dependancies:
 
+- [Homebrew](https://brew.sh/)
 - [Node](https://nodejs.org/en/): `brew install node`
 - [Npm](https://www.npmjs.com/): `npm install`
-- [Homebrew](https://brew.sh/) 
 
 ### Migrate and connect Postgres database
 
@@ -96,7 +102,7 @@ If you would like to use other SQL database you should just configure it in conf
 Finally, migrate the database on your local machine:
 
 ```bash
-cd shoppit-server
+cd shoppit_server
 npm run recreateDb
 ```
 
@@ -109,19 +115,21 @@ cd shoppit_server
 npm start
 ```
 
+To run the application, go to the [Shoppit client](https://github.com/Luke-Rogerson/shoppit_client) repo and follow the steps there to get the app up and running with the iOS simulator!
+
 ## Tech Stack
 
-### Back-end:
+### Back-end
 
 - [Express](https://expressjs.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Sequelize](http://docs.sequelizejs.com/)
 
-### Front-end: [wisher_frontend](https://github.com/Luke-Rogerson/wisher_frontend) 
+### Front-end: [wisher_frontend](https://github.com/Luke-Rogerson/wisher_frontend)
 
-## Developers team
+## Developer team
 
-- Amy Kirasack - [GitHub](https://github.com/momentmuse) - [LinkedIn](https://www.linkedin.com/in/amy-kirasack-186793147/detail/treasury/position:1398015310/?entityUrn=urn%3Ali%3Afs_treasuryMedia%3A(ACoAACOIcjYBc-Q-f2D0PRV7PjtP8Hrow0yjcxk%2C1544295149276)&section=position%3A1398015310&treasuryCount=2) 
+- Amy Kirasack - [GitHub](https://github.com/momentmuse) - [LinkedIn](https://www.linkedin.com/in/amy-kirasack/)
 - Charlie Rutland - [GitHub](https://github.com/charlierutland) - [LinkedIn](https://www.linkedin.com/in/charlie-rutland/)
 - Luke Rogerson - [GitHub](https://github.com/Luke-Rogerson) - [LinkedIn](https://www.linkedin.com/in/lukerogerson/)
 - Leandro Marques [GitHub](https://github.com/rusomarques) - [LinkedIn](https://www.linkedin.com/in/leandro-marques-pereira/)
