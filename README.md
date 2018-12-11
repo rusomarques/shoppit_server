@@ -3,7 +3,7 @@
 > Express server to compute and store data in a PostgreSQL database, providing services to our Shoppit mobile app.
 
 <p align="center">
-  <img src="./assets/logo.png" width="30%">
+  <img src="./assets/shoppit-banner.png" width="100%">
 </p>
 
 <p align="center">
