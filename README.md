@@ -10,7 +10,9 @@
 **Tinder for cool sh*t.**
 </p>
 
-Shoppit is a social shopping app that recommends curated items and reminds you of your friends' birthdays.
+Shoppit is a social shopping app.
+
+Spend a few minutes browsing our personalized, curated products. Buy something nice for yourself or a friend--never forget a birthday again!
 
 ## Table of contents
 
