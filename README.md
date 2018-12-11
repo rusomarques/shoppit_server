@@ -3,10 +3,6 @@
 > Express server to compute and store data in a PostgreSQL database, providing services to our Shoppit mobile app.
 
 <p align="center">
-**Tinder for cool sh*t.**
-</p>
-
-<p align="center">
   <img src="./assets/shoppit-banner.png" width="100%">
 </p>
 
@@ -21,7 +17,7 @@ Spend a few minutes discovering your personalized, curated products. Buy somethi
 - [Getting started](#getting-started)
 - [Usage](#usage)
 - [Tech Stack](#tech-stack)
-- [Developers team](#developers-team)
+- [Developer team](#developer-team)
 
 ## Screenshots
 
