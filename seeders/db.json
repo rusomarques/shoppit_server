@@ -1,0 +1,119 @@
+{
+  "users": [
+    {
+      "user_id": "10104049351001909",
+      "first_name": "Charlotte",
+      "last_name": "Rutland",
+      "gender": "female",
+      "birthday": "10-29-1984",
+      "email": "charlierutland@gmail.com",
+      "avatar_url": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10104049351001909&height=200&width=200&ext=1546617250&hash=AeTo7E-9A4A9Bgkv",
+      "accesstoken": "dasfghdjnqwihfadsfdsfsdfsdjsbjaHEY"
+    },
+    {
+      "user_id": "10156806974861963",
+      "first_name": "Amy",
+      "last_name": "Kirasack",
+      "gender": "female",
+      "birthday": "02-10-1991",
+      "email": "catsarecool@cool.com",
+      "avatar_url": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10156795786766963&height=200&width=200&ext=1546422310&hash=AeRq-t921z2bDemH",
+      "accesstoken": "EAAD1HTCH8CYBACIdSZCWl5EhG1cn5gWmHuFvjEnAtTNWUwQan8tHg5q6H9Yv4UXddxnzZBYVXhZCgKSzhNuoGwnDFzsxiocMbuUlRC5OOoapNfm1ZAhwxgJgo1E2AI47mD1Pk5d4sbTZAZCrwygjVevdzkatsPA9RfdQRjtKi26GhzOZCO9Nv3dowZBs1Y32LdJT92abOQx4tgpRRI80NzYi"
+    },
+    {
+      "user_id": "3",
+      "first_name": "Potato",
+      "last_name": "Potato",
+      "gender": "male",
+      "birthday": "03-08-1440",
+      "email": "potato@potato.com",
+      "avatar_url": "https://i.imgur.com/HjQ0GIF.png",
+      "accesstoken": "crynchycrynchyAYAYAhdjaslkjdkalspotato"
+    },
+    {
+      "user_id": "4",
+      "first_name": "Mean",
+      "last_name": "Guy",
+      "gender": "male",
+      "birthday": "11-09-1840",
+      "email": "mean@guy.com",
+      "avatar_url": "https://i.imgur.com/ZT0lxJC.jpg",
+      "accesstoken": "soMEANgrrrrrrjakldfjkalsjfalkKKKAAjd"
+    },
+    {
+      "user_id": "10157909557799325",
+      "first_name": "Leandro",
+      "last_name": "Marques",
+      "gender": "male",
+      "birthday": "09-29-1988",
+      "email": "leandromarques88@hotmail.com",
+      "avatar_url": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10157909557799325&height=200&width=200&ext=1546423211&hash=AeQyFvqxOYVNX4rz",
+      "accesstoken": "EAAD1HTCH8CYBAEwQZBCmkHKSm9EEpmlFlDEjZA1y8wfOzZBfHvfIeAzjo7ypHecmXBlKBWfMSfVi5EJidsWviZBPNjeGR14GdF9prfytq1kiXHn13wLzCATZAe9unZBqqpH8hFkhWIjy7IiJCItefCjcGgtOMwyKNtjGWVzZCb0NyzqWiNU0fZCNSZBcxQ75muVmyfes8JRh59QZDZD"
+    },
+    {
+      "user_id": "315136899336117",
+      "first_name": "Luke",
+      "last_name": "Rogerson",
+      "gender": "male",
+      "birthday": "12-12-1990",
+      "email": "luke@gmail.com",
+      "avatar_url": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=315136899336117&height=200&width=200&ext=1546423400&hash=AeRU3uGKOLMASHZe",
+      "accesstoken": "EAAD1HTCH8CYBAI7Wlz9JgwsNXLp61oXdSGAumVv4D0uSzQSIoBMzXz73ovLJTWzey7BDGJ7ZAX0LdJhswc87IwWkzKX3jZCRmktOe46nVYqfkidUpgADyCPyqBxKQiG6W7wDiv5NbTfZCu0OeLfoZAcMsR1fNQghYqZBtKbGWRpytDriMLdMOUpjlJpDtnsuPCk1YkB7TvAZDZD"
+    }
+  ],
+  "items": [
+    {
+      "item_id": 4288,
+      "item_name": "Cool comfy cactus",
+      "img_url": "https://i.imgur.com/koCQSPC.jpg",
+      "amazon_url": "https://www.amazon.com/Squishable-Cactus-Plush-15/dp/B073HGG8QD/ref=sr_1_5?ie=UTF8&qid=1543002244&sr=8-5&keywords=cactus+plush",
+      "price": "$48"
+    },
+    {
+      "item_id": 531,
+      "item_name": "Big sock monkey",
+      "img_url": "https://i.imgur.com/AFOpn2F.jpg",
+      "amazon_url": "https://www.amazon.com/Schylling-SSM-Sock-Monkey/dp/B0013JEAO4/ref=sr_1_4?ie=UTF8&qid=1543002432&sr=8-4&keywords=sock+monkey",
+      "price": "$40"
+    },
+    {
+      "item_id": 3036,
+      "item_name": "Banana guard",
+      "img_url": "https://i.imgur.com/JveKVrZ.png?1",
+      "amazon_url": "https://www.amazon.com/LovesTown-Different-Outdoor-Protector-Storage/dp/B072M4DQ45/ref=sr_1_2?ie=UTF8&qid=1543002605&sr=8-2&keywords=banana+bunker",
+      "price": "$5"
+    },
+    {
+      "item_id": 4190,
+      "item_name": "Cool book",
+      "img_url": "http://eloquentjavascript.net/2nd_edition/img/cover.png",
+      "amazon_url": "https://www.amazon.com/Eloquent-JavaScript-3rd-Introduction-Programming/dp/1593279507/ref=sr_1_3?s=books&ie=UTF8&qid=1543250150&sr=1-3&keywords=javascript",
+      "price": "$34"
+    },
+    {
+      "item_id": 203,
+      "item_name": "Sickkkkk kicks",
+      "img_url": "https://i.imgur.com/xIAFxhO.jpg",
+      "amazon_url": "https://www.amazon.com/Eloquent-JavaScript-3rd-Introduction-Programming/dp/1593279507/ref=sr_1_3?s=books&ie=UTF8&qid=1543250150&sr=1-3&keywords=javascript",
+      "price": "$130"
+    }
+  ],
+  "categories": [
+    {
+      "category_id": 1,
+      "category_name": "Toys"
+    },
+    {
+      "category_id": 2,
+      "category_name": "Sneakers"
+    },
+    {
+      "category_id": 3,
+      "category_name": "Books"
+    },
+    {
+      "category_id": 4,
+      "category_name": "Kitchen"
+    }
+  ]
+}
